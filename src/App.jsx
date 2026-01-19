@@ -1,7 +1,17 @@
 import React from "react";
+import { BrowserRouter as BrowserRouter, Routes, Route } from "react-router-dom";
+import WelcomePage from "./core/layout/WelcomePage";
+import Header from "./core/layout/Header";
 
-export default () => (
-  <>
-    <h1>Gozba na klik</h1>
-  </>
-);
+function App() {
+  return (
+    <BrowserRouter>
+        <Header/>
+        <Routes>
+          <Route path="/" element={<WelcomePage />} />
+        </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
