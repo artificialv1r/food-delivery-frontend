@@ -1,0 +1,211 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center; 
+  background-size: cover; 
+  justify-content: center;
+  background-image: url("../../core/images/burger.png");
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../core/images/burger.png");
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px);
+  z-index: -1;
+}
+
+.landing-page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-content {
+  text-align: center;
+  color: white;
+  
+  h1 {
+    font-size: 64px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  }
+
+  p {
+    font-size: 24px;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  }
+}
+
+.open-modal-btn {
+  padding: 16px 48px;
+  font-size: 18px;
+  font-weight: 600;
+  background: rgba(1, 1, 1, 0.8);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(0, 0, 0, 0.95);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* glavna karta */
+.container1 {
+  display: flex;
+  width: 800px;
+  height: 500px;
+  background: rgb(231, 231, 231);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* forma */
+.register {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.register h1 {
+  margin-bottom: 5px;
+  font-size: 26px;
+  color: #333;
+}
+
+form div {
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4f7cff;
+  box-shadow: 0 0 0 2px rgba(79, 124, 255, 0.15);
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  background: #0601014f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    background: #000000bf;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+form div label {
+  font-size: 13px;
+  color: #dedede00;
+}
+
+/* slika */
+.image-side {
+  flex: 1;
+  background-image: url("https://cdn.discordapp.com/attachments/1448529720701358152/1461408025238704252/burger-image.png?ex=696a71c8&is=69692048&hm=7639a098e08ae625034025a68bb8fc1e08d2d2ee37b0af1cc7f6e790a8540c70&");
+  background-size: cover;
+  background-position: center;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-icon input {
+  padding-left: 30px;
+}
+
+.input-with-icon .material-symbols-outlined {
+  position: absolute;
+  left: 5px;
+  font-size: 20px;
+  color: #e3e3e3;
+}
+
+.test1 {
+  margin-top: 5px;
+  display: flex;
+  gap: 20px;
+}
+
+.test1 .field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-text {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #666;
+
+  a {
+    color: #4f7cff;
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// errori
+form span {
+  color: #d32f2f;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
