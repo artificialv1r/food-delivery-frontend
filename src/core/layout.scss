@@ -1,5 +1,4 @@
-@import './layout/_variables';
-
+@import './layout/variables';
 
 * {
   margin: 0;
@@ -13,7 +12,7 @@ body {
   min-height: 100vh;
   background-size: cover;
   background-position: center;
-  background-image: url('https://cdn.discordapp.com/attachments/1448529720701358152/1461403743940645028/bowl-of-noodles.png?ex=696a6dcc&is=69691c4c&hm=4ff3b38a5cbbe4a5189fbab4013de87f1764c90991154d415f8e399777882590&');
+  background-image: url('https://cdn.discordapp.com/attachments/1448529720701358152/1461403743940645028/bowl-of-noodles.png?ex=696e624c&is=696d10cc&hm=7a87516e33927f3b05bbe68a3712f2547630ab7a7cf6789d2f0754ae527c5265&');
   font-family: $main-font;
 }
 
@@ -29,7 +28,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 38px 38px;
+  padding: 20px 40px;
 
   .navbar-title {
     h2 {
@@ -68,7 +67,7 @@ body {
   align-items: flex-start;
   justify-content: flex-start;
   min-height: 80vh;
-  padding: 80px 48px 32px 48px;
+  padding: 80px 48px 32px 40px;
 
   .content {
     max-width: 650px;
@@ -126,6 +125,22 @@ body {
         font-size: 17px;
         line-height: 1.7;
         max-width: 100%;
+      }
+    }
+  }
+  
+  .login-form {
+    flex-direction: column;
+    
+    .image-left {
+      display: none;
+    }
+    
+    form {
+      min-height: 100vh;
+      
+      h2 {
+        font-size: 24px;
       }
     }
   }

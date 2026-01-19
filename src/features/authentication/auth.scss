@@ -1,0 +1,131 @@
+@import '../../core/layout/_variables';
+
+* {
+  box-sizing: border-box;
+  font-family: $main-font;
+}
+
+// Glavni wrapper za login formu
+.login-form {
+  display: flex;
+  width: 800px;
+  height: 500px;
+  background: rgb(231, 231, 231);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.image-left {
+  flex: 1;
+  background-image: url("https://cdn.discordapp.com/attachments/1448529720701358152/1461408025238704252/burger-image.png?ex=696e6648&is=696d14c8&hm=871617def42418f70fe74f402ac27e75a4cbf1ed59d5349d3fcefddc75bbafc0&");
+  background-size: cover;
+  background-position: center;
+}
+
+// Forma
+form {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: $font-size-large;
+    color: $text-color-dark;
+  }
+
+  > div {
+    margin-bottom: 5px;
+
+    label {
+      font-size: 13px;
+      color: #dedede00;
+    }
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    background: $accent-color;
+    color: $text-color-light;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      background: $tertiary-color;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+// Input sa ikonom
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  input {
+    width: 100%;
+    padding: 14px;
+    padding-left: 30px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: $accent-color;
+      box-shadow: 0 0 0 2px rgba(242, 97, 63, 0.15);
+    }
+  }
+
+  .material-symbols-outlined {
+    position: absolute;
+    left: 5px;
+    font-size: 20px;
+    color: #e3e3e3;
+  }
+}
+
+// Error poruke
+.error-message {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+@include responsive($breakpoint-medium) {
+  .login-form {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+
+    .image-left {
+      display: none;
+    }
+
+    form {
+      h2 {
+        font-size: $font-size-medium;
+      }
+    }
+  }
+}
