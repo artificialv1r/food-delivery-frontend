@@ -1,6 +1,5 @@
 @import './layout/_variables';
 
-
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +12,7 @@ body {
   min-height: 100vh;
   background-size: cover;
   background-position: center;
-  background-image: url('https://cdn.discordapp.com/attachments/1448529720701358152/1461403743940645028/bowl-of-noodles.png?ex=696a6dcc&is=69691c4c&hm=4ff3b38a5cbbe4a5189fbab4013de87f1764c90991154d415f8e399777882590&');
+  background-image: url('./images/bowl-of-noodles.png');
   font-family: $main-font;
 }
 
@@ -29,28 +28,28 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 38px 38px;
+  padding: 20px 40px;
 
   .navbar-title {
     h2 {
       color: $text-color-light;
-      font-size: 48px;
+      font-size: 28px;
+      margin: 0px;
       font-weight: 400;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
     }
   }
 
   .navbar-buttons {
     display: flex;
-    gap: 30px;
+    gap: 20px;
 
     button {
       color: $text-color-light;
-      font-size: 18px;
+      font-size: 14px;
       font-weight: 600;
-      padding: 10px 30px;
-      border: 3px solid $text-color-light;
-      background-color: transparent;
+      padding: 5px 15px;
+      border: 2px solid #ffffff;
+      background-color: rgba(0, 0, 0, 0.6);
       border-radius: 20px;
       cursor: pointer;
 
@@ -66,9 +65,10 @@ body {
 .welcome-main {
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start;
   min-height: 80vh;
-  padding: 80px 48px 32px 48px;
+  padding: 0px 40px;
+  flex-direction: column;
+  justify-content: center;
 
   .content {
     max-width: 650px;
