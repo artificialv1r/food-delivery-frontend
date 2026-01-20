@@ -41,11 +41,12 @@ const RegisterForm = ({ handleRegister }) => {
   };
 
   return (
-    <div>
+    <div className="auth-container">
       <form onSubmit={handleSubmit(onSubmit)}>
+        <h1>Create an new account</h1>
         <div className="test1">
           <div className="field">
-            <label>Name:</label>
+            
             <div className="input-with-icon">
               <span className="material-symbols-outlined">person</span>
               <input {...register("name", { required: "Name is required." })} placeholder="Name" />
@@ -54,7 +55,7 @@ const RegisterForm = ({ handleRegister }) => {
           </div>
 
           <div className="field">
-            <label>Surname:</label>
+
             <div className="input-with-icon">
               <span className="material-symbols-outlined">person</span>
               <input {...register("surname", { required: "Surname is required." })} placeholder="Surname" />
@@ -64,7 +65,6 @@ const RegisterForm = ({ handleRegister }) => {
         </div>
 
         <div>
-          <label>Username:</label>
           <div className="input-with-icon">
             <span className="material-symbols-outlined">person</span>
             <input {...register("username", { required: "Username is required." })} placeholder="Username" />
@@ -73,7 +73,6 @@ const RegisterForm = ({ handleRegister }) => {
         </div>
 
         <div>
-          <label>Password:</label>
           <div className="input-with-icon">
             <span className="material-symbols-outlined">lock</span>
             <input type="password" {...register("password", { required: "Password is required." })} placeholder="Password" />
@@ -82,7 +81,6 @@ const RegisterForm = ({ handleRegister }) => {
         </div>
 
         <div>
-          <label>Confirm Password:</label>
           <div className="input-with-icon">
             <span className="material-symbols-outlined">lock</span>
             <input
@@ -98,7 +96,6 @@ const RegisterForm = ({ handleRegister }) => {
         </div>
 
         <div>
-          <label>Email:</label>
           <div className="input-with-icon">
             <span className="material-symbols-outlined">mail</span>
             <input {...register("email", { required: "Email is required." })} placeholder="Email" />

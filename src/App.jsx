@@ -1,27 +1,20 @@
-
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as BrowserRouter, Routes, Route } from "react-router-dom";
+import WelcomePage from "./core/layout/WelcomePage";
+import Header from "./core/layout/Header";
 import AuthRegister from "./features/authentication/AuthRegister";
 
-const Dashboard = () => {
-  return (
-    <div>
-      <h1>Welcome to Dashboard!</h1>
-      <p>You are logged in.</p>
-    </div>
-  );
-};
-
-const App = () => {
+function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/register" element={<AuthRegister />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="*" element={<AuthRegister />} />
-      </Routes>
+        <Header/>
+        <Routes>
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/register" element={<AuthRegister />} />
+          <Route path="*" element={<AuthRegister />} />
+        </Routes>
     </BrowserRouter>
   );
-};
+}
 
 export default App;
