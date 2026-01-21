@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useState } from "react";
+import React, {useState, useEffect} from "react";
 import Header from "./core/layout/Header";
 import Modal from "./features/authentication/components/Modal";
 import UserLoginForm from "./features/authentication/components/UserLoginForm";
@@ -10,6 +10,14 @@ function App() {
   const [authModal, setAuthModal] = useState(null);
   const [loginError, setLoginError] = useState(null); 
   const [isLoading, setIsLoading] = useState(false); 
+  const [user, setUser] = useState (null);
+
+  useEffect (()=> {
+    const storedUser = localStorage.getItem ('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
 
   const openLogin = () => {
     setAuthModal("login");
@@ -25,17 +33,20 @@ function App() {
     setIsLoading(true);
     setLoginError(null);
     
+    
     try {
       const response = await loginUser(credentials);
       console.log("Login successful:", response);
 
-      localStorage.setItem('token', response.token);
-      localStorage.setItem('user', JSON.stringify({  
-        id: response.id,
-        username: response.username,
-        role: response.role
-      }));
+      const userData = {   
+      id: response.id, 
+      username: response.username,  
+      role: response.role 
+      };
 
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('user', JSON.stringify(userData));
+      setUser(userData);
       closeModal();
       
     } catch (error) {
@@ -46,9 +57,19 @@ function App() {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setUser(null);
+  };
+
   return (
     <BrowserRouter>
-      <Header onLoginClick={openLogin} />
+      <Header 
+      onLoginClick={openLogin}
+      onLogoutClick={handleLogout} 
+      isLoggedIn={!!user}
+      />
 
       <Routes>
         <Route path="/" element={<WelcomePage />} />
