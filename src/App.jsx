@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as BrowserRouter, Routes, Route } from "react-router-dom";
-import WelcomePage from "./pages/WelcomePage";
+import WelcomePage from "./core/layout/WelcomePage";
 import Header from "./core/layout/Header";
 import UserLoginForm from "./features/authentication/components/UserLoginForm";
 
