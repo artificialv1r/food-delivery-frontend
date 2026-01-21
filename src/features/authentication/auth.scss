@@ -15,15 +15,11 @@
   overflow: hidden;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
   margin: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .image-left {
   flex: 1;
-  background-image: url("https://cdn.discordapp.com/attachments/1448529720701358152/1461408025238704252/burger-image.png?ex=696e6648&is=696d14c8&hm=871617def42418f70fe74f402ac27e75a4cbf1ed59d5349d3fcefddc75bbafc0&");
+  background-image: url('../../core/images/burger-image.png');
   background-size: cover;
   background-position: center;
 }

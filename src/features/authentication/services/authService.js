@@ -1,8 +1,6 @@
-import axios from "axios";
+import Api from "../../../core/services/api";
 
-const API_URL = "https://localhost:7115";
-
-export const loginUser = async (user) => {
-    const response = await axios.post (`${API_URL}/api/Users/login`, user);
+export const loginUser = async (userData) => {
+    const response = await Api.post("/api/Users/login", userData);
     return response.data;
 };

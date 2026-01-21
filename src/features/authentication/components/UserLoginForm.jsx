@@ -1,10 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { loginUser } from "../services/authService";
 import "../auth.scss";
 
 
-const UserLoginForm = ({ handleLoginSuccess }) => {
+const UserLoginForm = ({ onSubmit, error, isLoading }) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         defaultValues: {
             Username: "",
@@ -12,30 +11,15 @@ const UserLoginForm = ({ handleLoginSuccess }) => {
         }
     });
 
-    const onSubmit = async (data) => {
-        try {
-            const response = await loginUser(data);
-            console.log("Login successful:", response);
-
-            localStorage.setItem('token', response.token);
-            localStorage.setItem('user', JSON.stringify({  
-                id: response.id,
-                username: response.username,
-                role: response.role
-            }));
-
-            handleLoginSuccess(response);
-            reset();
-        } catch (error) {
-            console.error("Login failed:", error.response?.data || error.message);
-            alert("Login failed: " + (error.response?.data || error.message));
-        }
+    const handleFormSubmit = (data) => {
+        onSubmit (data);
+        reset(); 
     };
 
     return (  
         <div className="login-form">
             <div className="image-left"></div>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(handleFormSubmit)}>
                 <div>
                     <label>Username:</label>
                     <div className="input-with-icon">
@@ -61,7 +45,9 @@ const UserLoginForm = ({ handleLoginSuccess }) => {
                     {errors.Password && <span className="error-message">{errors.Password.message}</span>}
                 </div>
 
-                <button type="submit">Log In</button>
+                <button type="submit" disabled={isLoading}>
+                    {isLoading ? "Logging in..." : "Log In"}
+                </button>
             </form>
         </div>
     );
