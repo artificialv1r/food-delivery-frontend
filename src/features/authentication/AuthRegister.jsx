@@ -7,7 +7,6 @@ const AuthRegister = () => {
   const [showModal, setShowModal] = useState(false);
 
   const handleRegister = (data) => {
-    console.log("Registered user:", data);
 // Nakon uspešne registracije, zatvori modal
     setShowModal(false);
   };
@@ -15,13 +14,13 @@ const AuthRegister = () => {
   return (
     <div className="landing-page">
       <div className="landing-content">
-        <h1>Dobrodošli!</h1>
-        <p>Kreirajte nalog i započnite svoje putovanje</p>
+        <h1>Wellcome</h1>
+        <p>Create your new account!</p>
         <button 
           className="open-modal-btn" 
           onClick={() => setShowModal(true)}
         >
-          Registruj se
+          Register
         </button>
       </div>
 

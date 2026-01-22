@@ -152,7 +152,7 @@ form div label {
 /* slika */
 .image-side {
   flex: 1;
-  background-image: url("https://cdn.discordapp.com/attachments/1448529720701358152/1461408025238704252/burger-image.png?ex=696a71c8&is=69692048&hm=7639a098e08ae625034025a68bb8fc1e08d2d2ee37b0af1cc7f6e790a8540c70&");
+  background-image: url('/src/core/images/burger.png');
   background-size: cover;
   background-position: center;
 }
@@ -209,4 +209,23 @@ form span {
   font-size: 12px;
   margin-top: 4px;
   display: block;
+}
+
+.auth-container {
+  max-width: 800px; 
+  width: 100%;
+  overflow-x: hidden; 
+}
+
+.container1 {
+  display: flex;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.modal-content {
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }

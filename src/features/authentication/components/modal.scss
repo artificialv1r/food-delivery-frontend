@@ -19,8 +19,8 @@
   background: transparent;
   border-radius: 12px;
   max-width: 90vw;
-  max-height: 90vh;
-  overflow: auto;
+  max-height: none;
+  overflow: visible;
   animation: slideIn 0.3s ease-out;
 }
 

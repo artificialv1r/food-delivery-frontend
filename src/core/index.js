@@ -1,5 +1,3 @@
-import React from "react";
-import { createRoot } from 'react-dom/client';
-import App from "./App";
-
-createRoot(document.getElementById('root')).render(<App/>)
+export { default as Header } from "./layout/Header";
+export { default as Footer } from "./layout/Footer";
+export { default as Welcome } from "./layout/Welcome";
