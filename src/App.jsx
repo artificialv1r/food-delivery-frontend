@@ -1,19 +1,20 @@
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, {useState, useEffect} from "react";
 import Header from "./core/layout/Header";
 import Modal from "./features/authentication/components/Modal";
 import UserLoginForm from "./features/authentication/components/UserLoginForm";
+import RegisterForm from "./features/authentication/components/UserRegistrationForm";
 import WelcomePage from "./core/layout/WelcomePage";
 import { loginUser } from "./features/authentication/services/authService";
 
 function App() {
   const [authModal, setAuthModal] = useState(null);
-  const [loginError, setLoginError] = useState(null); 
-  const [isLoading, setIsLoading] = useState(false); 
-  const [user, setUser] = useState (null);
+  const [loginError, setLoginError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState(null);
 
-  useEffect (()=> {
-    const storedUser = localStorage.getItem ('user');
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
@@ -23,7 +24,9 @@ function App() {
     setAuthModal("login");
     setLoginError(null);
   };
-  
+
+  const openRegister = () => setAuthModal("register");
+
   const closeModal = () => {
     setAuthModal(null);
     setLoginError(null);
@@ -32,23 +35,21 @@ function App() {
   const handleLogin = async (credentials) => {
     setIsLoading(true);
     setLoginError(null);
-    
-    
+
     try {
       const response = await loginUser(credentials);
       console.log("Login successful:", response);
 
-      const userData = {   
-      id: response.id, 
-      username: response.username,  
-      role: response.role 
+      const userData = {
+        id: response.id,
+        username: response.username,
+        role: response.role
       };
 
       localStorage.setItem('token', response.token);
       localStorage.setItem('user', JSON.stringify(userData));
       setUser(userData);
       closeModal();
-      
     } catch (error) {
       console.error("Login failed:", error);
       setLoginError(error.response?.data || "Login failed. Please try again.");
@@ -66,9 +67,10 @@ function App() {
   return (
     <BrowserRouter>
       <Header 
-      onLoginClick={openLogin}
-      onLogoutClick={handleLogout} 
-      isLoggedIn={!!user}
+        onLoginClick={openLogin}
+        onRegisterClick={openRegister}
+        onLogoutClick={handleLogout}
+        isLoggedIn={!!user}
       />
 
       <Routes>
@@ -83,6 +85,7 @@ function App() {
             isLoading={isLoading}
           />
         )}
+        {authModal === "register" && <RegisterForm onSuccess={closeModal} />}
       </Modal>
     </BrowserRouter>
   );

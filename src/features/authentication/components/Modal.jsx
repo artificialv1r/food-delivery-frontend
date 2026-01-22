@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./modal.scss";
 
 const Modal = ({ isOpen, onClose, children }) => {
+// Zatvara modal na ESC
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") {
@@ -11,6 +12,9 @@ const Modal = ({ isOpen, onClose, children }) => {
 
     if (isOpen) {
       document.addEventListener("keydown", handleEscape);
+
+// Spреcava scroll na body kada je modal otvoren
+
       document.body.style.overflow = "hidden";
     }
 
