@@ -33,7 +33,7 @@ const RegisterForm = ({ onSuccess }) => {
       <div className="container1">
         <div className="register">
           <form onSubmit={handleSubmit(handleRegistration)}>
-            <h1>Create an new account</h1>
+            <h1>Create a new account</h1>
             <div className="test1">
               <div className="field">
 

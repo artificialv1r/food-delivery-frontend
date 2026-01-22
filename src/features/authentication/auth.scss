@@ -16,6 +16,12 @@
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
   margin: auto;
 }
+h1 {
+  margin-bottom: 15px;
+  font-size: 26px;
+  color: #F2613F;
+  text-align: center;;
+}
 
 .image-left {
   flex: 1;
@@ -78,8 +84,7 @@ form {
 
   input {
     width: 100%;
-    padding: 14px;
-    padding-left: 30px;
+    padding: 13px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 14px;
@@ -97,6 +102,7 @@ form {
     left: 5px;
     font-size: 20px;
     color: #e3e3e3;
+    bottom: 17px;
   }
 }
 
