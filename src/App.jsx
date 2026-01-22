@@ -6,6 +6,7 @@ import UserLoginForm from "./features/authentication/components/UserLoginForm";
 import RegisterForm from "./features/authentication/components/UserRegistrationForm";
 import WelcomePage from "./core/layout/WelcomePage";
 import { loginUser } from "./features/authentication/services/authService";
+import AddUserForm from "./features/admin/components/AddUserForm";
 
 function App() {
   const [authModal, setAuthModal] = useState(null);
@@ -75,6 +76,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<WelcomePage />} />
+        <Route path="/admin/add-user" element={<AddUserForm />} />
+
       </Routes>
 
       <Modal isOpen={!!authModal} onClose={closeModal}>
