@@ -4,8 +4,8 @@ import "./modal.scss";
 const Modal = ({ isOpen, onClose, children }) => {
 // Zatvara modal na ESC
   useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") {
+    const handleEscape = (escape) => {
+      if (escape.key === "Escape") {
         onClose();
       }
     };
