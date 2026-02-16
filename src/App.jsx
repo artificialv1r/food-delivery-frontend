@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./core/layout/Header";
 import Modal from "./features/authentication/components/Modal";
@@ -6,12 +6,21 @@ import UserLoginForm from "./features/authentication/components/UserLoginForm";
 import RegisterForm from "./features/authentication/components/UserRegistrationForm";
 import WelcomePage from "./core/layout/WelcomePage";
 import { loginUser } from "./features/authentication/services/authService";
-import AdminUsers from "./features/admin/components/AdminUsers";
+import AddUserForm from "./features/admin/components/AddUserForm";
+import UsersList from "./features/admin/components/UsersList";
 
 function App() {
-  const [authModal, setAuthModal] = useState(null); // "login" | "register" | null
+  const [authModal, setAuthModal] = useState(null);
   const [loginError, setLoginError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
 
   const openLogin = () => {
     setAuthModal("login");
@@ -33,13 +42,15 @@ function App() {
       const response = await loginUser(credentials);
       console.log("Login successful:", response);
 
-      localStorage.setItem('token', response.token);
-      localStorage.setItem('user', JSON.stringify({  
+      const userData = {
         id: response.id,
         username: response.username,
         role: response.role
-      }));
+      };
 
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('user', JSON.stringify(userData));
+      setUser(userData);
       closeModal();
     } catch (error) {
       console.error("Login failed:", error);
@@ -49,13 +60,25 @@ function App() {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setUser(null);
+  };
+
   return (
     <BrowserRouter>
-      <Header onLoginClick={openLogin} onRegisterClick={openRegister} />
+      <Header 
+        onLoginClick={openLogin}
+        onRegisterClick={openRegister}
+        onLogoutClick={handleLogout}
+        isLoggedIn={!!user}
+      />
 
       <Routes>
         <Route path="/" element={<WelcomePage />} />
-        <Route path="/admin/users" element={<AdminUsers />} />
+        <Route path="/admin/add-user" element={<AddUserForm />} />
+        <Route path="/admin/users" element={<UsersList />} />
       </Routes>
 
       <Modal isOpen={!!authModal} onClose={closeModal}>

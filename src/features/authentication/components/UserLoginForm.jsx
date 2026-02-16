@@ -20,6 +20,7 @@ const UserLoginForm = ({ onSubmit, error, isLoading }) => {
         <div className="login-form">
             <div className="image-left"></div>
             <form onSubmit={handleSubmit(handleFormSubmit)}>
+                <h1>Log in</h1>
                 <div>
                     <label>Username:</label>
                     <div className="input-with-icon">

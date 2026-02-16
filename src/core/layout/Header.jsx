@@ -1,7 +1,7 @@
 import React from "react";
 import "../layout.scss";
 
-const Header = ({ onLoginClick, onRegisterClick }) => {
+const Header = ({ onLoginClick, onRegisterClick, onLogoutClick, isLoggedIn }) => {
   return (
     <header>
       <nav className="navbar">
@@ -10,8 +10,14 @@ const Header = ({ onLoginClick, onRegisterClick }) => {
         </div>
         
         <div className="navbar-buttons">
-          <button onClick={onLoginClick}>Log in</button>
-          <button onClick={onRegisterClick}>Register</button>
+          {isLoggedIn ? (
+            <button onClick={onLogoutClick}>Log out</button>
+          ) : (
+            <>
+            <button onClick={onLoginClick}>Log in</button>
+            <button onClick={onRegisterClick}>Register</button>
+            </>
+          )}
         </div>
       </nav>
     </header>

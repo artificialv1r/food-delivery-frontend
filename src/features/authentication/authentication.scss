@@ -1,8 +1,5 @@
 @import '../../core/layout.scss';
 
-
-
-
 .auth-container {
   margin: 0;
   min-height: 100vh;
@@ -99,7 +96,7 @@
 .register h1 {
   margin-bottom: 15px;
   font-size: 26px;
-  color: #333;
+  color: #F2613F;
 }
 
 form div {
@@ -152,7 +149,7 @@ form div label {
 /* slika */
 .image-side {
   flex: 1;
-  background-image: url('/src/core/images/burger.png');
+  background-image: url('../../core/images/burger.png');
   background-size: cover;
   background-position: center;
 }
@@ -172,6 +169,7 @@ form div label {
   left: 5px;
   font-size: 20px;
   color: #e3e3e3;
+  bottom: 16px;
 }
 
 .test1 {
