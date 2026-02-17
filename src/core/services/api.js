@@ -1,7 +1,7 @@
 import axios from "axios";
 
 let Api = axios.create({
-    baseURL: "https://localhost:7115",
+    baseURL: import.meta.env.VITE_API_BASE_URL,
 });
 
 export default Api;

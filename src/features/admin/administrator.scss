@@ -98,3 +98,102 @@
   border-radius: 6px;
   text-align: center;
 }
+
+.users-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  button{
+    background: #ff073a;
+    color: white;
+    padding: 6px 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    &:disabled{
+      cursor: not-allowed;
+    }
+  }
+
+  .users-list-container {
+    background-color: #0C0C0C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+
+    table {
+      max-width: 1200px;
+      width: 1200px;
+      border-radius: 10px;
+      border-collapse: collapse;
+
+      tr:nth-child(even) {
+        background-color: #0a0a0a;
+      }
+
+      thead {
+        color: white;
+        border-bottom: 2px solid #fff700;
+        th {
+          padding: 20px 10px;
+          text-align: left;
+        }
+      }
+
+      tbody {
+        color: white;
+
+        td {
+          padding: 20px 10px;
+        }
+
+        .role-admin {
+          color: #ff073a;
+        }
+
+        .role-owner {
+          color: #c77dff;
+        }
+
+        .role-customer {
+          color: #fff700;
+        }
+
+        .role-courier {
+          color: #39ff14;
+        }
+
+        .role-default {
+          color: #333;
+        }
+      }
+    }
+    .pagination{
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      span{
+        color: #fff;
+      }
+      button{
+        background: #fff700;
+        color: black;
+        padding: 6px 12px;
+        font-weight: bold;
+        border-radius: 4px;
+        cursor: pointer;
+        border: none;
+        &:disabled{
+          cursor: not-allowed;
+          color: gray;
+          background: #fefb82;
+        }
+      }
+    }
+  }
+}
