@@ -89,7 +89,12 @@ function App() {
             isLoading={isLoading}
           />
         )}
-        {authModal === "register" && <RegisterForm onSuccess={closeModal} />}
+        {authModal === "register" && (
+            <RegisterForm
+                onSuccess={closeModal}
+                onSwitchToLogin={() => setAuthModal("login")}
+            />
+        )}
       </Modal>
     </BrowserRouter>
   );

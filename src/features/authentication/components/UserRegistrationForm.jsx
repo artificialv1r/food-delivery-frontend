@@ -4,7 +4,7 @@ import { registerUser } from "../services/authService";
 import { useNavigate } from "react-router-dom";
 import "../authentication.scss";
 
-const RegisterForm = ({ onSuccess }) => {
+const RegisterForm = ({ onSuccess, onSwitchToLogin }) => {
   const { register, handleSubmit, formState: {errors}, reset, watch } = useForm();
 
   const[error, setError] = useState("");
@@ -96,7 +96,13 @@ const RegisterForm = ({ onSuccess }) => {
             <button type="submit">Register</button>
 
             <p className="signup-text">
-              Already have an account? <a href="#">Sign in</a>
+              Already have an account?{" "}
+              <span
+                  className="auth-link"
+                  onClick={onSwitchToLogin}
+              >
+                Log in
+              </span>
             </p>
           </form>
         </div>
