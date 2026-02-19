@@ -102,7 +102,14 @@
 .users-list{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
+  padding: 20px 40px;
+  margin-top: 80px;
+  width: 100%;
+
+  h1{
+    color: white;
+  }
 
   button{
     background: #ff073a;
@@ -123,10 +130,10 @@
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
+    width: 100%;
 
     table {
-      max-width: 1200px;
-      width: 1200px;
+      width: 100%;
       border-radius: 10px;
       border-collapse: collapse;
 
