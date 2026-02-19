@@ -8,6 +8,8 @@ import WelcomePage from "./core/layout/WelcomePage";
 import { loginUser } from "./features/authentication/services/authService";
 import AddUserForm from "./features/admin/components/AddUserForm";
 import UsersList from "./features/admin/components/UsersList";
+import HomePage from "./core/layout/HomePage";
+import RestaurantsList from "./features/restaurants/components/RestaurantsList";
 
 function App() {
   const [authModal, setAuthModal] = useState(null);
@@ -76,7 +78,7 @@ function App() {
       />
 
       <Routes>
-        <Route path="/" element={<WelcomePage />} />
+        <Route path="/" element={<HomePage user={user} />} />
         <Route path="/admin/add-user" element={<AddUserForm />} />
         <Route path="/admin/users" element={<UsersList />} />
       </Routes>
