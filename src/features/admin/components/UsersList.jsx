@@ -69,6 +69,9 @@ const UsersList = () => {
 
   return (
    <div className="users-list">
+     <h1>
+       Users List
+     </h1>
      <div className="users-list-container">
        <table>
          <thead>
