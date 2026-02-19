@@ -1,0 +1,128 @@
+@import '/src/core/layout/variables';
+.restaurants-page {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 40px;
+  margin-top: 80px;
+
+  .restaurants-hero {
+    display: flex;
+    justify-content: start;
+
+    h1 {
+      color: $accent-color;
+    }
+  }
+
+  .restaurants-filters {
+    display: flex;
+    justify-content: space-between;
+
+    select {
+      padding: 10px;
+      border: none;
+      background: $background-transparent;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      color: $accent-color;
+
+      &:focus{
+        outline: none;
+      }
+    }
+  }
+
+  .search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0;
+
+    input {
+      color: $accent-color;
+      flex: 1;
+      padding: 10px;
+      border-radius: 40px;
+      font-size: 16px;
+      font-weight: bold;
+
+      &::placeholder {
+        font-weight: normal;
+      }
+
+      &:focus{
+        outline: none;
+      }
+    }
+
+    .restaurants-controls{
+      width: fit-content;
+    }
+  }
+  .restaurants-grid{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .pagination{
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+
+
+    button{
+      background-color: transparent;
+      border: none;
+      font-size: 16px;
+      color: $accent-color;
+      font-weight: bold;
+
+      &:disabled{
+        color: gray;
+        cursor: not-allowed;
+      }
+    }
+
+  }
+
+  .restaurant-card{
+    color: $text-color-light;
+    background-color: #1e1e1e;
+    width: 300px;
+    border-radius: 20px;
+    transition: all 300ms ease;
+    cursor: pointer;
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    .restaurant-card-image{
+      border-radius: 20px 20px 0 0;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+
+      img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+    }
+
+    .restaurant-card-content{
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      h3{
+        color: $accent-color;
+      }
+    }
+  }
+}
