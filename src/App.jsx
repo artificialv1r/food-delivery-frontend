@@ -10,6 +10,7 @@ import AddUserForm from "./features/admin/components/AddUserForm";
 import UsersList from "./features/admin/components/UsersList";
 import HomePage from "./core/layout/HomePage";
 import RestaurantsList from "./features/restaurants/components/RestaurantsList";
+import AdminRestaurantsList from "./features/admin/components/AdminRestaurantsList"
 
 function App() {
   const [authModal, setAuthModal] = useState(null);
@@ -81,6 +82,7 @@ function App() {
         <Route path="/" element={<HomePage user={user} />} />
         <Route path="/admin/add-user" element={<AddUserForm />} />
         <Route path="/admin/users" element={<UsersList />} />
+        <Route path="/admin/restaurants" element={<AdminRestaurantsList />} />
       </Routes>
 
       <Modal isOpen={!!authModal} onClose={closeModal}>

@@ -28,3 +28,26 @@ export async function getFilteredSortedRestaurants(
     return response.data;
 }
 
+export async function fetchRestaurants(page, pageSize) {
+    try{
+        const token = localStorage.getItem("token");
+        const response = await Api.get(`/api/Restaurants?page=${page}&pageSize=${pageSize}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+        return response.data;
+    }catch(error){
+        throw error;
+    }
+}
+
+export async function deleteRestaurant(id) {
+    const token = localStorage.getItem("token");
+    const response = await Api.delete(`/api/Restaurants/${id}`, {
+        headers: {
+        Authorization: `Bearer ${token}`,
+        }
+    });
+}
+
