@@ -99,7 +99,7 @@
   text-align: center;
 }
 
-.users-list{
+.users-list, .restaurants-list{
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -124,7 +124,7 @@
     }
   }
 
-  .users-list-container {
+  .users-list-container, .restaurants-list-container  {
     background-color: #0C0C0C;
     display: flex;
     flex-direction: column;

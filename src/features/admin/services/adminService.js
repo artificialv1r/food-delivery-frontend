@@ -20,6 +20,6 @@ export async function fetchUsers(page, pageSize){
             }})
         return response.data;
     }catch(error){
-
+        throw error;
     }
 }
