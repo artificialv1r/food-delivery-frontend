@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import Header from "./core/layout/Header";
 import Modal from "./features/authentication/components/Modal";
 import UserLoginForm from "./features/authentication/components/UserLoginForm";
@@ -11,6 +11,12 @@ import UsersList from "./features/admin/components/UsersList";
 import HomePage from "./core/layout/HomePage";
 import RestaurantsList from "./features/restaurants/components/RestaurantsList";
 import AdminRestaurantsList from "./features/admin/components/AdminRestaurantsList"
+import OwnerMealsList from "./features/meal/components/OwnerMealList";
+
+function OwnerMealsPage() {
+    const { restaurantId } = useParams();
+    return <OwnerMealsList restaurantId={parseInt(restaurantId)} />;
+}
 
 function App() {
   const [authModal, setAuthModal] = useState(null);
@@ -83,6 +89,7 @@ function App() {
         <Route path="/admin/add-user" element={<AddUserForm />} />
         <Route path="/admin/users" element={<UsersList />} />
         <Route path="/admin/restaurants" element={<AdminRestaurantsList />} />
+        <Route path="/owner/restaurants/:restaurantId/meals" element={<OwnerMealsPage />} />
       </Routes>
 
       <Modal isOpen={!!authModal} onClose={closeModal}>
