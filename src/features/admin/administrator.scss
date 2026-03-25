@@ -103,8 +103,6 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  padding: 20px 40px;
-  margin-top: 80px;
   width: 100%;
 
   h1{
@@ -202,5 +200,14 @@
         }
       }
     }
+  }
+}
+
+.admin-dashboard {
+  display: flex;
+
+  .admin-content {
+    flex: 1;
+    padding: 30px;
   }
 }
