@@ -13,11 +13,11 @@ export async function getFilteredSortedRestaurants(
     params.append("pageSize", pageSize);
     params.append("sortType", sortType);
 
-    if (filters.name){
+    if (filters.name) {
         params.append("Name", filters.name);
     }
 
-    if (filters.mealName){
+    if (filters.mealName) {
         params.append("MealName", filters.mealName);
     }
 
@@ -29,7 +29,7 @@ export async function getFilteredSortedRestaurants(
 }
 
 export async function fetchRestaurants(page, pageSize) {
-    try{
+    try {
         const token = localStorage.getItem("token");
         const response = await Api.get(`/api/Restaurants?page=${page}&pageSize=${pageSize}`, {
             headers: {
@@ -37,7 +37,35 @@ export async function fetchRestaurants(page, pageSize) {
             },
         })
         return response.data;
-    }catch(error){
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function addRestaurant(restaurantData) {
+    try {
+        const token = localStorage.getItem("token");
+        const response = await Api.post(`/api/Restaurants/restaurant`, restaurantData, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function updateRestaurant(id, restaurantData) {
+    try {
+        const token = localStorage.getItem("token");
+        const response = await Api.put(`/api/Restaurants/${id}`, restaurantData, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
+        return response.data;
+    } catch (error) {
         throw error;
     }
 }
@@ -46,7 +74,7 @@ export async function deleteRestaurant(id) {
     const token = localStorage.getItem("token");
     const response = await Api.delete(`/api/Restaurants/${id}`, {
         headers: {
-        Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
         }
     });
 }

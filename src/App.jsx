@@ -12,6 +12,8 @@ import HomePage from "./core/layout/HomePage";
 import RestaurantsList from "./features/restaurants/components/RestaurantsList";
 import AdminRestaurantsList from "./features/admin/components/AdminRestaurantsList"
 import AdminDashboard from "./features/admin/components/AdminDashboard";
+import RestaurantForm from "./features/admin/components/RestaurantForm";
+
 function App() {
   const [authModal, setAuthModal] = useState(null);
   const [loginError, setLoginError] = useState(null);
@@ -85,6 +87,8 @@ function App() {
         <Route path="/admin" element={<AdminDashboard user={user} />}>
           <Route path="users" element={<UsersList />} />
           <Route path="restaurants" element={<AdminRestaurantsList />} />
+          <Route path="restaurant/add" element={<RestaurantForm />} />
+          <Route path="restaurant/update/:id" element={<RestaurantForm />} />
         </Route>
       </Routes>
 
