@@ -222,6 +222,14 @@
 }
 
 .restaurants-list {
+
+  .restaurant-hero{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .btn-edit {
     margin-left: 0px;
     background: #F2613F;
@@ -233,8 +241,6 @@
 
   .btn-add {
     background: #F2613F;
-    margin-top: 15px;
-
     &:hover {
       background: #d84b2b;
     }

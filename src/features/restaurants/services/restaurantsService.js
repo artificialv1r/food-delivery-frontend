@@ -42,6 +42,15 @@ export async function fetchRestaurants(page, pageSize) {
     }
 }
 
+export async function fetchRestaurant(id) {
+    try {
+        const response = await Api.get(`/api/Restaurants/${id}`)
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
+
 export async function addRestaurant(restaurantData) {
     try {
         const token = localStorage.getItem("token");

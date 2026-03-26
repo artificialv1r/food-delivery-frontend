@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { addRestaurant, updateRestaurant } from "../../restaurants/services/restaurantsService";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchUsers } from "../services/adminService";
-import { fetchRestaurants } from "../../restaurants/services/restaurantsService";
+import { fetchRestaurant } from "../../restaurants/services/restaurantsService";
 import '../administrator.scss';
 
 const RestaurantForm = () => {
@@ -15,13 +15,12 @@ const RestaurantForm = () => {
 
 
     useEffect(() => {
-        if (!id) return;
+        if (!id || owners.length === 0) return;
 
         async function loadRestaurants() {
             try {
-                const restaurants = await fetchRestaurants(1, 1000);
-                const restaurant = restaurants.items.find(r => r.id === parseInt(id));
-                console.log(restaurant);
+                const restaurant = await fetchRestaurant(id);
+                if (!restaurant) return;
                 reset({
                     name: restaurant.name,
                     description: restaurant.description,
@@ -31,9 +30,9 @@ const RestaurantForm = () => {
                 setError("Error while loading restaurant.");
             }
         }
-        loadRestaurants();
-    }, [id, reset]);
 
+        loadRestaurants();
+    }, [id, owners, reset]);
 
     async function submitForm(data) {
         try {
@@ -64,7 +63,7 @@ const RestaurantForm = () => {
     return (
         <div className="restaurant-form">
             <form onSubmit={handleSubmit(submitForm)} className="form">
-                <h1>Add new restaurant</h1>
+                <h1>{id ? "Edit restaurant" : "Add restaurant"}</h1>
                 {err && <p style={{ color: 'red' }}>{err}</p>}
 
                 <div>
@@ -88,7 +87,7 @@ const RestaurantForm = () => {
                 </div>
                 <div>
                     <label>Owner:</label>
-                    <select {...register('ownerId', { required: "Owner is required" })}>
+                    <select {...register('ownerId', { required: "Owner is required", valueAsNumber: true })}>
                         <option value="">Select Owner</option>
                         {owners.map(owner => (
                             <option key={owner.id} value={owner.id}>

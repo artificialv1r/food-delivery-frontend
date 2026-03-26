@@ -69,9 +69,10 @@ export default function AdminRestaurantsList() {
 
     return (
         <div className="restaurants-list">
-            <h1>
-                Restaurants list
-            </h1>
+            <div className="restaurant-hero">
+                <h1>Restaurants list</h1>
+                <button className="btn-add" onClick={() => navigate(`/admin/restaurant/add`)}>Add Restaurant</button>
+            </div>
             <div className="restaurants-list-container">
                 <table>
                     <thead>
@@ -95,11 +96,6 @@ export default function AdminRestaurantsList() {
                                 </td>
                             </tr>
                         ))}
-                        <tr>
-                            <td>
-                                <button className="btn-add" onClick={() => navigate(`/admin/restaurant/add`)}>Add Restaurant</button>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
                 <div className="pagination">
