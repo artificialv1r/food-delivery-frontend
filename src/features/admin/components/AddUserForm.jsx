@@ -23,7 +23,7 @@ const AddUserForm = () => {
         Email: formData.email,
         Role: parseInt(formData.role)
       };
-
+      
       await registerUserByAdmin(newUserData);
       setSuccess("User successfully added!");
       reset();

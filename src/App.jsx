@@ -11,6 +11,7 @@ import UsersList from "./features/admin/components/UsersList";
 import HomePage from "./core/layout/HomePage";
 import RestaurantsList from "./features/restaurants/components/RestaurantsList";
 import AdminRestaurantsList from "./features/admin/components/AdminRestaurantsList"
+import MealForm from "./features/meals/components/MealForm";
 
 function App() {
   const [authModal, setAuthModal] = useState(null);
@@ -83,6 +84,8 @@ function App() {
         <Route path="/admin/add-user" element={<AddUserForm />} />
         <Route path="/admin/users" element={<UsersList />} />
         <Route path="/admin/restaurants" element={<AdminRestaurantsList />} />
+        <Route path="/test-meal" element={<MealForm restaurantId={2} onSuccess={() => console.log("success")} onCancel={() => console.log("cancel")} />} />
+
       </Routes>
 
       <Modal isOpen={!!authModal} onClose={closeModal}>
