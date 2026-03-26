@@ -1,13 +1,14 @@
 import React from "react";
 import "../layout.scss";
+import {Link} from "react-router-dom";
 
 const Header = ({ onLoginClick, onRegisterClick, onLogoutClick, isLoggedIn }) => {
   return (
     <header>
       <nav className="navbar">
-        <div className="navbar-title">
-            <h2>Gozba na klik</h2>
-        </div>
+          <Link to="/" className="navbar-title">
+              <h2>Gozba na klik</h2>
+          </Link>
         
         <div className="navbar-buttons">
           {isLoggedIn ? (

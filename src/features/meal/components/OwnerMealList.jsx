@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { fetchMealsFromRestaurant } from '../services/mealsService';
 import '../meals.scss';
 
-export default function OwnerMealsList({ restaurantId }) {
+export default function OwnerMealsList() {
+    const {restaurantId} = useParams();
     const [meals, setMeals] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -17,7 +19,7 @@ export default function OwnerMealsList({ restaurantId }) {
         } finally {
             setLoading(false);
         }
-    }
+    } 
 
     useEffect(() => {
         if (restaurantId) {

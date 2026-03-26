@@ -11,12 +11,10 @@ import UsersList from "./features/admin/components/UsersList";
 import HomePage from "./core/layout/HomePage";
 import RestaurantsList from "./features/restaurants/components/RestaurantsList";
 import AdminRestaurantsList from "./features/admin/components/AdminRestaurantsList"
+import AdminDashboard from "./features/admin/components/AdminDashboard";
+import RestaurantForm from "./features/admin/components/RestaurantForm";
 import OwnerMealsList from "./features/meal/components/OwnerMealList";
 
-function OwnerMealsPage() {
-    const { restaurantId } = useParams();
-    return <OwnerMealsList restaurantId={parseInt(restaurantId)} />;
-}
 
 function App() {
   const [authModal, setAuthModal] = useState(null);
@@ -87,9 +85,15 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage user={user} />} />
         <Route path="/admin/add-user" element={<AddUserForm />} />
-        <Route path="/admin/users" element={<UsersList />} />
-        <Route path="/admin/restaurants" element={<AdminRestaurantsList />} />
-        <Route path="/owner/restaurants/:restaurantId/meals" element={<OwnerMealsPage />} />
+        <Route path="/owner/restaurants/:restaurantId/meals" element={<OwnerMealsList />} />
+
+        <Route path="/admin" element={<AdminDashboard user={user} />}>
+          <Route path="users" element={<UsersList />} />
+          <Route path="restaurants" element={<AdminRestaurantsList />} />
+          <Route path="restaurant/add" element={<RestaurantForm />} />
+          <Route path="restaurant/update/:id" element={<RestaurantForm />} />
+        </Route>
+
       </Routes>
 
       <Modal isOpen={!!authModal} onClose={closeModal}>
