@@ -22,11 +22,9 @@ body {
 
 }
 header{
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
 
 }
 .navbar {
@@ -37,8 +35,10 @@ header{
   align-items: center;
   padding: 20px 40px;
   border-bottom: 2px solid $light-transparent;
+  height: 10dvh;
 
   .navbar-title {
+    text-decoration: none;
     h2 {
       color: $text-color-light;
       font-size: 28px;
@@ -101,6 +101,52 @@ header{
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
     }
   }
+}
+
+.sidebar-container{
+  background-color: $background-color;
+  border-right: 2px solid $light-transparent;
+  height: 100dvh;
+  width:200px;
+
+  .sidebar-header{
+    display: flex;
+    padding: 20px 10px;
+    gap: 10px;
+    align-items: center;
+    border-bottom: 2px solid $light-transparent;
+    h3{
+      color: $text-color-light;
+    }
+  }
+
+  .sidebar-content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 15px;
+  }
+
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: $text-color-light;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 6px;
+    transition: 0.2s ease;
+  }
+
+  .sidebar-link:hover {
+    background-color: $light-transparent;
+  }
+
+  .sidebar-link.active {
+    color: #fff700;
+    font-weight: bold;
+  }
+
 }
 
 @include responsive($breakpoint-medium) {

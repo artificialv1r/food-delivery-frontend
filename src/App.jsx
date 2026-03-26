@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import Header from "./core/layout/Header";
 import Modal from "./features/authentication/components/Modal";
 import UserLoginForm from "./features/authentication/components/UserLoginForm";
@@ -11,7 +11,11 @@ import UsersList from "./features/admin/components/UsersList";
 import HomePage from "./core/layout/HomePage";
 import RestaurantsList from "./features/restaurants/components/RestaurantsList";
 import AdminRestaurantsList from "./features/admin/components/AdminRestaurantsList"
-import MealForm from "./features/meals/components/MealForm";
+import AdminDashboard from "./features/admin/components/AdminDashboard";
+import RestaurantForm from "./features/admin/components/RestaurantForm";
+import OwnerMealsList from "./features/meals/components/OwnerMealList";
+
+
 
 function App() {
   const [authModal, setAuthModal] = useState(null);
@@ -82,10 +86,15 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage user={user} />} />
         <Route path="/admin/add-user" element={<AddUserForm />} />
-        <Route path="/admin/users" element={<UsersList />} />
-        <Route path="/admin/restaurants" element={<AdminRestaurantsList />} />
-        <Route path="/test-meal" element={<MealForm restaurantId={2} onSuccess={() => console.log("success")} onCancel={() => console.log("cancel")} />} />
 
+        <Route path="/owner/restaurants/:restaurantId/meals" element={<OwnerMealsList />} />
+        
+        <Route path="/admin" element={<AdminDashboard user={user} />}>
+          <Route path="users" element={<UsersList />} />
+          <Route path="restaurants" element={<AdminRestaurantsList />} />
+          <Route path="restaurant/add" element={<RestaurantForm />} />
+          <Route path="restaurant/update/:id" element={<RestaurantForm />} />
+        </Route>
       </Routes>
 
       <Modal isOpen={!!authModal} onClose={closeModal}>

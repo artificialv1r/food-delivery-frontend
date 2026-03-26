@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import {deleteRestaurant, fetchRestaurants} from "../../restaurants/services/restaurantsService";
+import React, { useState, useEffect } from 'react';
+import { deleteRestaurant, fetchRestaurants } from "../../restaurants/services/restaurantsService";
 import '../administrator.scss'
+import { useNavigate } from 'react-router-dom';
 
 export default function AdminRestaurantsList() {
     const [restaurants, setRestaurants] = useState([]);
@@ -12,9 +13,11 @@ export default function AdminRestaurantsList() {
     const [hasNextPage, setHasNextPage] = useState(false);
     const [hasPreviousPage, setHasPreviousPage] = useState(false);
 
+    const navigate = useNavigate();
+
     const [pageSize, setPageSize] = useState(10);
 
-    async function loadRestaurants(){
+    async function loadRestaurants() {
         try {
             setLoading(true);
             const data = await fetchRestaurants(page, pageSize);
@@ -22,16 +25,16 @@ export default function AdminRestaurantsList() {
             setTotalItems(data.count);
             setHasNextPage(data.hasNextPage);
             setHasPreviousPage(data.hasPreviousPage);
-        }catch(error){
+        } catch (error) {
             setError("Failed to load restaurants.");
-        }finally {
+        } finally {
             setLoading(false);
         }
     }
 
-    useEffect(() =>{
-         loadRestaurants();
-    },[page, pageSize]);
+    useEffect(() => {
+        loadRestaurants();
+    }, [page, pageSize]);
 
     const totalPages = Math.ceil(totalItems / pageSize);
 
@@ -47,7 +50,7 @@ export default function AdminRestaurantsList() {
         }
     };
 
-    async function handleDelete(id){
+    async function handleDelete(id) {
         try {
             await deleteRestaurant(id);
             loadRestaurants();
@@ -66,29 +69,33 @@ export default function AdminRestaurantsList() {
 
     return (
         <div className="restaurants-list">
-            <h1>
-                Restaurants list
-            </h1>
+            <div className="restaurant-hero">
+                <h1>Restaurants list</h1>
+                <button className="btn-add" onClick={() => navigate(`/admin/restaurant/add`)}>Add Restaurant</button>
+            </div>
             <div className="restaurants-list-container">
                 <table>
                     <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Owner</th>
-                    </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Owner</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    {restaurants.map((restaurant) =>(
-                        <tr key={restaurant.name}>
-                            <td>{restaurant.name}</td>
-                            <td>{restaurant.description}</td>
-                            <td>{restaurant.ownerUserName}</td>
-                            <td><button onClick={()=>{
-                                handleDelete(restaurant.id);
-                            }}>Delete</button></td>
-                        </tr>
-                    ))}
+                        {restaurants.map((restaurant) => (
+                            <tr key={restaurant.name}>
+                                <td>{restaurant.name}</td>
+                                <td>{restaurant.description}</td>
+                                <td>{restaurant.ownerUserName}</td>
+                                <td><button onClick={() => {
+                                    handleDelete(restaurant.id);
+                                }}>Delete</button></td>
+                                <td>
+                                    <button className="btn-edit" onClick={() => navigate(`/admin/restaurant/update/${restaurant.id}`)}>Edit</button>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
                 <div className="pagination">
@@ -100,8 +107,8 @@ export default function AdminRestaurantsList() {
                     </button>
 
                     <span>
-         Page {page} of {totalPages} (Total: {totalItems} restaurants)
-       </span>
+                        Page {page} of {totalPages} (Total: {totalItems} restaurants)
+                    </span>
                     <button
                         onClick={handleNextPage}
                         disabled={!hasNextPage || loading}

@@ -1,22 +1,22 @@
-import React, {useState, useEffect} from "react";
-import {createMeal, updateMeal} from "../services/mealsService";
+import React, { useState, useEffect } from "react";
+import { createMeal, updateMeal } from "../services/mealsService";
 import "../meals.scss";
 
-export default function MealForm ({restaurantId, existingMeal, onSuccess, onCancel}) {
-    const [formData, setFormData] = useState ({
+export default function MealForm({ restaurantId, existingMeal, onSuccess, onCancel }) {
+    const [formData, setFormData] = useState({
         name: "",
         description: "",
         price: ""
     });
-    const [error, setError] = useState (null);
+    const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
-    const [loading, setLoading] = useState (false);
+    const [loading, setLoading] = useState(false);
 
     const isEdit = !!existingMeal;
 
-    useEffect (() => {
+    useEffect(() => {
         if (existingMeal) {
-            setFormData ({
+            setFormData({
                 name: existingMeal.name,
                 description: existingMeal.description || "",
                 price: existingMeal.price
@@ -28,7 +28,7 @@ export default function MealForm ({restaurantId, existingMeal, onSuccess, onCanc
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
     }
 
-    async function handleSubmit (e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         setError(null);
         setLoading(true);
@@ -40,7 +40,7 @@ export default function MealForm ({restaurantId, existingMeal, onSuccess, onCanc
         };
 
         try {
-            
+
             if (isEdit) {
                 await updateMeal(restaurantId, existingMeal.id, payload);
             } else {
@@ -49,7 +49,15 @@ export default function MealForm ({restaurantId, existingMeal, onSuccess, onCanc
             setSuccess(isEdit ? "Meal updated successfully!" : "Meal added successfully!");
             onSuccess();
         } catch (err) {
-            setError(err.response?.data || "Something went wrong.");
+            const data = err.response?.data;
+            if (data?.errors) {
+                const messages = Object.values(data.errors).flat().join(", ");
+                setError(messages);
+            } else if (typeof data === "string") {
+                setError(data);
+            } else {
+                setError("Something went wrong.");
+            }
         } finally {
             setLoading(false);
         }
