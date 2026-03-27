@@ -15,14 +15,20 @@ export default function MealForm({ restaurantId, existingMeal, onSuccess, onCanc
     const isEdit = !!existingMeal;
 
     useEffect(() => {
-        if (existingMeal) {
-            setFormData({
-                name: existingMeal.name,
-                description: existingMeal.description || "",
-                price: existingMeal.price
-            });
-        }
-    }, [existingMeal]);
+    if (existingMeal) {
+        setFormData({
+            name: existingMeal.name,
+            description: existingMeal.description || "",
+            price: existingMeal.price
+        });
+    } else {
+        setFormData({
+            name: "",
+            description: "",
+            price: ""
+        });
+    }
+}, [existingMeal]);
 
     function handleChange(e) {
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));

@@ -99,7 +99,16 @@
 }
 
 .meals-list {
-  padding: 1.5rem 0;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   h1 {
     font-size: 22px;
@@ -179,7 +188,7 @@
 }
 
 .btn-add {
-  margin-top: 20px;
+  margin-top: 10px;
   padding: 10px 25px;
   background-color: $accent-color;
   color: $text-color-light;
@@ -187,6 +196,7 @@
   border-radius: 20px;
   font-size: $font-size-small;
   font-weight: bold;
+  width: 150px;
   cursor: pointer;
   transition: all 300ms ease;
 

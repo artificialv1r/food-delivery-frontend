@@ -104,11 +104,11 @@ export default function OwnerMealsList() {
                     <div className="no-data">No meals found for this restaurant.</div>
                 )}
             </div>
-
+            <div className='btn-wrap'>
             <button className="btn-add" onClick={handleAdd}>
                 + Add Meal
             </button>
-
+            </div>
             {showForm && (
                 <MealForm
                     restaurantId={parseInt(restaurantId)}
