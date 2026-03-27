@@ -9,3 +9,13 @@ export async function fetchMealsFromRestaurant(restaurantId) {
     });
     return response.data;
 }
+
+export async function fetchMealsWithAllergens(restaurantId) {
+    const token = localStorage.getItem("token");
+    const response = await Api.get(`/api/Restaurants/${restaurantId}/menu`,{
+        headers:{
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    return response.data;
+}
