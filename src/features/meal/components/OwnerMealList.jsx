@@ -13,8 +13,6 @@ export default function OwnerMealsList() {
         try {
             setLoading(true);
             const data = await fetchMealsFromRestaurant(restaurantId);
-            //TEST!!!!!!!!!!!!!!!!!!!!!!!!!
-            console.log(data);
             setMeals(data);
         } catch (error) {
             setError("Failed to load meals.");
@@ -53,7 +51,6 @@ export default function OwnerMealsList() {
                             <th>Description</th>
                             <th>Price</th>
                             <th>Allergens</th>
-                            <th>Btns</th>
                         </tr>
                     </thead>
                     <tbody>
