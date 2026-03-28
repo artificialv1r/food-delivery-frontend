@@ -17,11 +17,12 @@
   flex-direction: column;
   gap: 20px;
   padding: 20px;
-  border-radius: 10px;
-  background-color: whitesmoke;
+  border-radius: 14px;
+  background: #16181f;
+  color: white;
   width: 300px;
   overflow: hidden;
-
+  border: 2px solid whitesmoke;
   .card-header{
     display: flex;
     justify-content: flex-start;
@@ -29,7 +30,7 @@
 
   .order-status{
     font-weight: bold;
-    color: #e74c3c;
+    color: #fff700;
   }
 
   .card-body{
@@ -57,7 +58,7 @@
       justify-content: space-between;
 
       .price{
-        color: #17723e;
+        color: #27ae60;
         font-weight: bold;
       }
     }
@@ -88,19 +89,19 @@
     }
 
     .accept-btn{
-      background-color: #17723e;
+      background-color: #27ae60;
       transition: 300ms all;
 
       &:hover{
-        background-color: #27ae60;
+        background-color: #17723e;
       }
     }
 
     .cancel-btn{
-      background-color: #cb052b;
+      background-color: #ff073a;
       transition: 300ms all;
       &:hover{
-        background-color: #ff073a;
+        background-color: #cb052b;
       }
     }
   }

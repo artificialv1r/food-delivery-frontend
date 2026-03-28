@@ -36,7 +36,7 @@ export default function OwnerRestaurants({user}){
             </div>
             <div className="restaurants-grid">
                 {restaurants.map((restaurant) => (
-                    <div key={restaurant.id} onClick={() => navigate(`/owner/restaurants/${restaurant.id}/pending-orders`)}>
+                    <div key={restaurant.id} onClick={() => navigate(`/owner/restaurants/${restaurant.id}`)}>
                     <RestaurantCard
                         key={restaurant.name}
                         image={restaurant.imageUrl || "../src/core/images/placeholder.jpg"}
