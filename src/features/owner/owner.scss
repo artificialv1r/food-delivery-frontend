@@ -1,0 +1,19 @@
+@import '/src/features/restaurants/restaurants';
+
+.owner-dashboard {
+  display: flex;
+
+  .owner-content {
+    flex: 1;
+    padding: 30px;
+  }
+}
+
+.restaurants-grid{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}

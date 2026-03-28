@@ -149,6 +149,13 @@ header{
 
 }
 
+.page-layout{
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+  gap: 10px;
+}
+
 @include responsive($breakpoint-medium) {
   .navbar {
     padding: 16px 24px;
