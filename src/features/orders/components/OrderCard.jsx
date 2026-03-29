@@ -7,7 +7,7 @@ export default function OrderCard({ order, onUpdate }) {
     const [processing, setProcessing] = useState(false);
     const minDateTime = new Date(Date.now() + 5 * 60000).toISOString().slice(0, 16);
     const [showConfirm, setShowConfirm] = useState(false);
-
+    const isPending = order.status === "OnHold";
 
     const handleAccept = async () => {
         if(!readyAt){
@@ -70,7 +70,7 @@ export default function OrderCard({ order, onUpdate }) {
                     ))}
                 </div>
 
-                <div className="delivery-info">
+                {isPending && (<div className="delivery-info">
                     <label htmlFor="readyAt">Ready at:</label>
                     <input
                         id="readyAt"
@@ -80,7 +80,7 @@ export default function OrderCard({ order, onUpdate }) {
                         onChange={(e) => setReadyAt(e.target.value)}
                         disabled={processing}
                 />
-                </div>
+                </div>)}
 
                 <div className="delivery-price">
                     <span className="label">Total: </span>
@@ -90,7 +90,7 @@ export default function OrderCard({ order, onUpdate }) {
                 </div>
             </div>
 
-            <div className="card-footer">
+            {isPending && (<div className="card-footer">
                 {showConfirm ? (
                     <div className="confirm-dialog">
                     <span className="confirm-text">Are you sure you want to cancel this order?</span>
@@ -106,7 +106,7 @@ export default function OrderCard({ order, onUpdate }) {
                 </>
                     )
                 }
-            </div>
+            </div>)}
         </div>
     )
 }

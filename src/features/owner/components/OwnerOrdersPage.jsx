@@ -3,7 +3,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {fetchRestaurant} from "../../restaurants/services/restaurantsService";
 import "../owner.scss"
 
-export default function OwnerRestaurantPage() {
+export default function OwnerOrdersPage() {
     const navigate = useNavigate();
     const {restaurantId} = useParams();
     const [restaurant, setRestaurant] = useState([]);
@@ -36,13 +36,15 @@ export default function OwnerRestaurantPage() {
                 <p>{restaurant.description}</p>
             </div>
             <div className="page-content">
-                <div className="restaurant-management">
-                    <div className="manage-card" onClick={() => navigate(`/owner/restaurants/${restaurantId}/meals`)}>
-                        <h3>Manage meals</h3>
+                <div className="orders-history">
+                    <div className="manage-card" onClick={() => navigate(`/owner/restaurants/${restaurantId}/orders/list?tab=pending`)}>
+                        <h3>Pending orders</h3>
                     </div>
-
-                    <div className="manage-card" onClick={() => navigate(`/owner/restaurants/${restaurantId}/orders/list?tab=pending`)} >
-                        <h3>Manage orders</h3>
+                    <div className="manage-card" onClick={() => navigate(`/owner/restaurants/${restaurantId}/orders/list?tab=accepted`)}>
+                        <h3>Accepted orders</h3>
+                    </div>
+                    <div className="manage-card" onClick={() => navigate(`/owner/restaurants/${restaurantId}/orders/list?tab=canceled`)}>
+                        <h3>Canceled orders</h3>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@ import { faUtensils, faUsers, faTruck, faClipboardList, faCog } from "@fortaweso
 export const SIDEBAR_LINKS = {
     3: [
         { to: "/owner/restaurants",      icon: faClipboardList, label: "My Restaurants" },
+        { to: "/owner/orders",      icon: faTruck, label: "My Orders" },
     ],
     5: [
         { to: "/courier/deliveries", icon: faTruck,        label: "Deliveries" },

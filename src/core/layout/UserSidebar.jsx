@@ -12,8 +12,14 @@ export default function UserSidebar({ user }) {
     return (
         <div className="sidebar-container">
             <div className="sidebar-header">
-                <FontAwesomeIcon icon={faCircleUser} size="xl" style={{ color: "#fff700" }} />
-                <h3>{user.username}</h3>
+                <div className="sidebar-user">
+                <div className="sidebar-avatar">
+                    {user.username?.slice(0, 2).toUpperCase()}
+                </div>
+                <div>
+                    <p className="sidebar-username">{user.username.toUpperCase()}</p>
+                </div>
+                </div>
             </div>
 
             <div className="sidebar-content">
@@ -21,16 +27,13 @@ export default function UserSidebar({ user }) {
                     <NavLink
                         key={to}
                         to={to}
+                        end
                         className={({ isActive }) => isActive ? "sidebar-link active" : "sidebar-link"}
                     >
                         <FontAwesomeIcon icon={icon} size="xl" style={{ color: "#fff700" }} />
                         <span>{label}</span>
                     </NavLink>
                 ))}
-
-                {links.length === 0 && (
-                    <p className="sidebar-no-links">Nema dostupnih stranica.</p>
-                )}
             </div>
 
             <div className="sidebar-footer">

@@ -14,6 +14,34 @@ export async function getPendingOrders(restaurantId){
     }
 }
 
+export async function getAcceptedOrders(restaurantId){
+    try{
+        const token = localStorage.getItem('token');
+        const response = await Api.get(`/api/Order/restaurant/${restaurantId}/accepted`,{
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
+        return response.data;
+    } catch (error){
+        throw error;
+    }
+}
+
+export async function getCanceledOrders(restaurantId){
+    try{
+        const token = localStorage.getItem('token');
+        const response = await Api.get(`/api/Order/restaurant/${restaurantId}/canceled`,{
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
+        return response.data;
+    } catch (error){
+        throw error;
+    }
+}
+
 export async function acceptOrder(orderId, data){
     try {
         const token = localStorage.getItem('token');

@@ -18,6 +18,8 @@ import OwnerDashboard from "./features/owner/components/OwnerDashboard";
 import OrdersList from "./features/orders/components/OrdersList";
 import OwnerRestaurants from "./features/owner/components/OwnerRestaurants";
 import OwnerRestaurantPage from "./features/owner/components/OwnerRestaurantPage";
+import OwnerOrders from "./features/owner/components/OwnerOrders";
+import OwnerOrdersPage from "./features/owner/components/OwnerOrdersPage";
 
 
 function App() {
@@ -99,9 +101,11 @@ function App() {
 
         <Route path="/owner" element={<OwnerDashboard user={user} />}>
           <Route path="restaurants" element={<OwnerRestaurants user={user} />} />
+          <Route path="orders" element={<OwnerOrders user={user} />} />
           <Route path="restaurants/:restaurantId" element={<OwnerRestaurantPage />} />
+          <Route path="restaurants/:restaurantId/orders" element={<OwnerOrdersPage />} />
           <Route path="restaurants/:restaurantId/meals" element={<OwnerMealsList />} />
-          <Route path="restaurants/:restaurantId/pending-orders" element={<OrdersList />} />
+          <Route path="restaurants/:restaurantId/orders/list" element={<OrdersList />} />
         </Route>
 
       </Routes>

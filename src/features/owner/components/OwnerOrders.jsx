@@ -5,7 +5,7 @@ import "../owner.scss"
 import {useNavigate} from "react-router-dom";
 import RestaurantsGrid from "../../restaurants/components/RestaurantGrid";
 
-export default function OwnerRestaurants({user}){
+export default function OwnerOrders({user}){
     const [restaurants, setRestaurants] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -33,13 +33,13 @@ export default function OwnerRestaurants({user}){
     return(
         <div className="page-layout restaurants-page">
             <div className="page-header">
-                <h1>My Restaurants</h1>
-                <p>Select a restaurant to manage its details, menu, and settings.</p>
+                <h1>My Orders</h1>
+                <p>Select a restaurant to view and manage its orders.</p>
             </div>
             <RestaurantsGrid
-            restaurants={restaurants}
-            getLink={(r) => `/owner/restaurants/${r.id}`}
-        />
+                restaurants={restaurants}
+                getLink={(r) => `/owner/restaurants/${r.id}/orders`}
+            />
         </div>
     )
 
