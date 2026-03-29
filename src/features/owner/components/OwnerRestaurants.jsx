@@ -27,7 +27,7 @@ export default function OwnerRestaurants({user}){
         fetchRestaurants();
     }, []);
 
-    if (loading) return <div className="page-layout">Loading restaurants...</div>;
+    if (loading) return <div className="page-layout restaurants-page">Loading restaurants...</div>;
     if (error)   return <div className="page-layout">{error}</div>;
 
     return(
