@@ -15,20 +15,20 @@ export default function MealForm({ restaurantId, existingMeal, onSuccess, onCanc
     const isEdit = !!existingMeal;
 
     useEffect(() => {
-    if (existingMeal) {
-        setFormData({
-            name: existingMeal.name,
-            description: existingMeal.description || "",
-            price: existingMeal.price
-        });
-    } else {
-        setFormData({
-            name: "",
-            description: "",
-            price: ""
-        });
-    }
-}, [existingMeal]);
+        if (existingMeal) {
+            setFormData({
+                name: existingMeal.name,
+                description: existingMeal.description || "",
+                price: existingMeal.price
+            });
+        } else {
+            setFormData({
+                name: "",
+                description: "",
+                price: ""
+            });
+        }
+    }, [existingMeal]);
 
     function handleChange(e) {
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -70,42 +70,44 @@ export default function MealForm({ restaurantId, existingMeal, onSuccess, onCanc
     }
 
     return (
-        <div className="meal-form">
-            <h2>{isEdit ? "Edit Meal" : "Add Meal"}</h2>
-            {error && <p className="error">{error}</p>}
-            {success && <p className="success">{success}</p>}
-            <form onSubmit={handleSubmit}>
-                <input
-                    name="name"
-                    placeholder="Meal name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                />
-                <textarea
-                    name="description"
-                    placeholder="Description (optional)"
-                    value={formData.description}
-                    onChange={handleChange}
-                />
-                <input
-                    name="price"
-                    type="number"
-                    step="0.01"
-                    placeholder="Price"
-                    value={formData.price}
-                    onChange={handleChange}
-                    required
-                />
-                <div className="meal-form-actions">
-                    <button type="submit" disabled={loading}>
-                        {loading ? "Saving..." : isEdit ? "Update Meal" : "Add Meal"}
-                    </button>
-                    <button type="button" onClick={onCancel}>
-                        Cancel
-                    </button>
-                </div>
-            </form>
+        <div className="meal-form-wrap">
+            <div className="meal-form">
+                <h2>{isEdit ? "Edit Meal" : "Add Meal"}</h2>
+                {error && <p className="error">{error}</p>}
+                {success && <p className="success">{success}</p>}
+                <form onSubmit={handleSubmit}>
+                    <input
+                        name="name"
+                        placeholder="Meal name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                    />
+                    <textarea
+                        name="description"
+                        placeholder="Description (optional)"
+                        value={formData.description}
+                        onChange={handleChange}
+                    />
+                    <input
+                        name="price"
+                        type="number"
+                        step="0.01"
+                        placeholder="Price"
+                        value={formData.price}
+                        onChange={handleChange}
+                        required
+                    />
+                    <div className="meal-form-actions">
+                        <button type="submit" disabled={loading}>
+                            {loading ? "Saving..." : isEdit ? "Update Meal" : "Add Meal"}
+                        </button>
+                        <button type="button" onClick={onCancel}>
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }

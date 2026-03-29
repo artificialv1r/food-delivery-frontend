@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchMealsFromRestaurant } from '../services/mealsService';
+import { fetchMealsFromRestaurant, deleteMeal } from '../services/mealsService';
 import MealForm from './MealForm';
 import '../meals.scss';
 
@@ -23,6 +23,16 @@ export default function OwnerMealsList() {
             setError("Failed to load meals.");
         } finally {
             setLoading(false);
+        }
+    }
+
+    async function handleDelete(mealId) {
+        try {
+            await deleteMeal(restaurantId, mealId);
+            loadMeals();
+        }
+        catch (error) {
+            setError("Failed to delete meal.")
         }
     }
 
@@ -58,7 +68,22 @@ export default function OwnerMealsList() {
 
     return (
         <div className="meals-list">
-            <h1>Meals list</h1>
+            <div className="meal-hero">
+                <h1>Meals list</h1>
+                <div className='btn-wrap'>
+                    <button className="btn-add" onClick={handleAdd}>
+                        + Add Meal
+                    </button>
+                </div>
+            </div>
+            {showForm && (
+                <MealForm
+                    restaurantId={parseInt(restaurantId)}
+                    existingMeal={editingMeal}
+                    onSuccess={handleSuccess}
+                    onCancel={handleCancel}
+                />
+            )}
             <div className="meals-table-container">
                 <table>
                     <thead>
@@ -89,6 +114,9 @@ export default function OwnerMealsList() {
                                     }
                                 </td>
                                 <td>
+                                    <button className="delete-btn" onClick={() => handleDelete(meal.id)}>Delete</button>
+                                </td>
+                                <td>
                                     <button
                                         className="btn-edit"
                                         onClick={() => handleEdit(meal)}
@@ -104,19 +132,6 @@ export default function OwnerMealsList() {
                     <div className="no-data">No meals found for this restaurant.</div>
                 )}
             </div>
-            <div className='btn-wrap'>
-            <button className="btn-add" onClick={handleAdd}>
-                + Add Meal
-            </button>
-            </div>
-            {showForm && (
-                <MealForm
-                    restaurantId={parseInt(restaurantId)}
-                    existingMeal={editingMeal}
-                    onSuccess={handleSuccess}
-                    onCancel={handleCancel}
-                />
-            )}
         </div>
     );
 }
