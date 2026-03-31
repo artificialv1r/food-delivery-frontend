@@ -9,6 +9,7 @@ export async function fetchMealsFromRestaurant(restaurantId) {
     });
     return response.data;
 }
+
 export async function deleteMeal(restaurantId, mealId){
     const token = localStorage.getItem("token");
     await Api.delete(`/api/Restaurants/${restaurantId}/meals/${mealId}`, {
@@ -17,3 +18,4 @@ export async function deleteMeal(restaurantId, mealId){
         },
     });
 }
+

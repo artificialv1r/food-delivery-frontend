@@ -1,0 +1,98 @@
+@import '/src/core/layout/variables';
+
+.active-order {
+    padding: 20px 40px;
+
+    h1 {
+        font-size: 22px;
+        font-weight: bold;
+        margin: 0 0 1.5rem;
+        color: white;
+    }
+
+    .no-order {
+        color: #888;
+        font-size: 14px;
+        padding: 2rem;
+        text-align: center;
+        background-color: #1e1e1e;
+        border-radius: 20px;
+    }
+
+    .order-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .order-section {
+        background-color: #1e1e1e;
+        border-radius: 20px;
+        padding: 20px;
+
+        h2 {
+            color: $accent-color;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: $font-size-small;
+            color: $text-color-light;
+            margin: 4px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+            thead {
+                border-bottom: 2px solid $accent-color;
+            }
+
+            thead th {
+                padding: 12px 16px;
+                text-align: left;
+                font-size: 13px;
+                font-weight: bold;
+                color: white;
+            }
+
+            tbody tr {
+                transition: background 0.15s;
+                cursor: default;
+
+                &:nth-child(even) {
+                    background-color: #0a0a0a;
+                }
+
+                &:hover {
+                    background-color: #3c3c3c;
+                }
+
+                td {
+                    padding: 13px 16px;
+                    font-size: 14px;
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+
+    .status-badge {
+        display: inline-block;
+        font-weight: bold;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: $font-size-small;
+
+        &.status-pickupinprogress {
+            background: #EAF3DE;
+            color: #3B6D11;
+        }
+
+        &.status-deliveryinprogress {
+            background: #E6F1FB;
+            color: #185FA5;
+        }
+    }
+}
