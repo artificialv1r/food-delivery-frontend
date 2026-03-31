@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchMealsFromRestaurant } from '../services/mealsService';
+import { fetchMealsFromRestaurant, deleteMeal } from '../services/mealsService';
 import '../meals.scss';
 
 export default function OwnerMealsList() {
@@ -19,7 +19,17 @@ export default function OwnerMealsList() {
         } finally {
             setLoading(false);
         }
-    } 
+    }
+    
+    async function handleDelete(mealId){
+        try {
+            await deleteMeal(restaurantId, mealId);
+            loadMeals();
+        }
+        catch (error){
+            setError("Failed to delete meal.")
+        }
+    }
 
     useEffect(() => {
         if (restaurantId) {
@@ -61,7 +71,10 @@ export default function OwnerMealsList() {
                                         : <span className="no-allergen">-</span>
                                     }
                                 </td>
-                            </tr>
+                                <td>
+                                    <button className="delete-btn" onClick={() => handleDelete(meal.id)}>Delete</button>
+                                </td>
+                            </tr>                           
                         ))}
                     </tbody>
                 </table>

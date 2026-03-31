@@ -124,3 +124,21 @@
   color: #640000;
 }
 
+
+  .delete-btn {
+  display: inline-block;
+  background: #FAECE7;
+  color: #993C1D;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background: #F0997B;
+    color: #fff;
+  }
+}
+}
