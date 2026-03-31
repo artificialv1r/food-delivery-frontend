@@ -88,3 +88,18 @@ export async function deleteRestaurant(id) {
     });
 }
 
+export async function getAllRestaurantsFromOneOwner(){
+    try{
+
+    const token = localStorage.getItem("token");
+    const response = await Api.get(`/api/Restaurants/owner`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        }
+    })
+    return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
+

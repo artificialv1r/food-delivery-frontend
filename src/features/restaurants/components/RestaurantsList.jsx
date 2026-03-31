@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import RestaurantCard from "./RestaurantCard";
 import {getFilteredSortedRestaurants} from "../services/restaurantsService";
-import "../restaurants.scss"
+import { useNavigate } from "react-router-dom";
+import "../restaurants.scss";
 
 export default function RestaurantsList(){
     const [restaurants, setRestaurants] = useState([]);
@@ -16,6 +17,7 @@ export default function RestaurantsList(){
     const pageSize = 8;
     const [searchType, setSearchType] = useState("name"); // default
     const [searchValue, setSearchValue] = useState("");
+    const navigate = useNavigate();
 
     const [filters, setFilters] = useState({
         name: "",
@@ -144,11 +146,11 @@ export default function RestaurantsList(){
             <div className="restaurants-grid">
                 {restaurants.map((restaurant) => (
                         <RestaurantCard
-                            key={restaurant.name}
+                            key={restaurant.id}
                             image={restaurant.imageUrl || "../src/core/images/placeholder.jpg"}
                             name={restaurant.name}
                             description={restaurant.description}
-                            onClick={() => navigate(`/restaurants/${restaurant.name}`)}
+                            onClick={() => navigate(`/restaurants/${restaurant.id}/menu`)}
                         />
                 ))}
             </div>

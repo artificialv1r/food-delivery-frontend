@@ -1,5 +1,12 @@
 @import '/src/core/layout/variables';
 
+.restaurant-menu-page {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 40px;
+}
+
 .meal-form-wrap {
   display: flex;
   width: 100%;
@@ -244,5 +251,62 @@ button {
 
   &:hover {
     background: #d84b2b;
+  }
+}
+
+.meals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  min-height: 150px;
+  height: auto;
+}
+
+.meal-card {
+  border: 1px solid #ddd;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #d8d6d6;
+  margin: 15px;
+  box-shadow: 0 2px 8px rgba(205, 204, 204, 0.1);
+  transition: transform 0.2s;
+  cursor: pointer;
+   h3{
+    color:#9B3922;
+   }
+}
+
+.meal-card:hover {
+  transform: translateY(-5px);
+}
+
+.meal-card-content {
+  padding: 10px;
+}
+
+.meal-card-price {
+  font-weight: bold;
+  color: green;
+}
+.meal-allergens{
+  color: #640000;
+}
+
+
+  .delete-btn {
+  display: inline-block;
+  background: #FAECE7;
+  color: #993C1D;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background: #F0997B;
+    color: #fff;
   }
 }

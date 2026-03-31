@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function RestaurantCard(props, onClick) {
+export default function RestaurantCard(props) {
     return (
-        <div className="restaurant-card" onClick={onClick}>
+        <div className="restaurant-card" onClick={props.onClick}>
             <div className="restaurant-card-image">
                 <img src={props.image} alt={props.name} width={300} height={150}/>
             </div>

@@ -26,6 +26,15 @@ export async function updateMeal(restaurantId, mealId, mealData) {
     return response.data;
 }
 
+export async function fetchMealsWithAllergens(restaurantId) {
+    const token = localStorage.getItem("token");
+    const response = await Api.get(`/api/Restaurants/${restaurantId}/menu`,{
+        headers:{
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    return response.data;
+}
 export async function deleteMeal(restaurantId, mealId){
     const token = localStorage.getItem("token");
     await Api.delete(`/api/Restaurants/${restaurantId}/meals/${mealId}`, {

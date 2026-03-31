@@ -1,0 +1,108 @@
+@import '/src/core/layout/variables';
+@import '/src/core/layout';
+
+.page-header{
+  h1{
+    color: white;
+  }
+  }
+.orders-layout{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+
+.order-card{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 14px;
+  background: #16181f;
+  color: white;
+  width: 300px;
+  overflow: hidden;
+  border: 2px solid whitesmoke;
+  .card-header{
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .order-status{
+    font-weight: bold;
+    color: #fff700;
+  }
+
+  .card-body{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    ul{
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .label{
+        font-weight: bold;
+    }
+
+    .meal-row{
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .delivery-price{
+      display: flex;
+      justify-content: space-between;
+
+      .price{
+        color: #27ae60;
+        font-weight: bold;
+      }
+    }
+  }
+  .card-footer{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    .confirm-dialog{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .confirm-buttons{
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+    }
+    button{
+      padding: 8px 14px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      color: white;
+      border: none;
+    }
+
+    .accept-btn{
+      background-color: #27ae60;
+      transition: 300ms all;
+
+      &:hover{
+        background-color: #17723e;
+      }
+    }
+
+    .cancel-btn{
+      background-color: #ff073a;
+      transition: 300ms all;
+      &:hover{
+        background-color: #cb052b;
+      }
+    }
+  }
+}
