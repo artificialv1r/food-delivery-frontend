@@ -13,7 +13,7 @@ export default function HomePage({ user}){
     }
 
     if (user.role === 1) return <Navigate to="/customer" replace />;
-    if (user.role === 2) return <Navigate to="/admin" replace />;
+    if (user.role === 2) return <Navigate to="/admin/users" replace />;
     if (user.role === 3) return <Navigate to="/owner/restaurants" replace />;
 
     return <WelcomePage/>;
