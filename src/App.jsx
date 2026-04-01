@@ -21,6 +21,8 @@ import OwnerRestaurants from "./features/owner/components/OwnerRestaurants";
 import OwnerRestaurantPage from "./features/owner/components/OwnerRestaurantPage";
 import OwnerOrders from "./features/owner/components/OwnerOrders";
 import OwnerOrdersPage from "./features/owner/components/OwnerOrdersPage";
+import CustomerDashboard from "./features/customers/components/CustomerDashboard";
+import CustomerOrders from "./features/customers/components/CustomerOrders";
 
 
 function App() {
@@ -92,14 +94,18 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage user={user} />} />
         <Route path="/admin/add-user" element={<AddUserForm />} />
-        <Route path="/restaurants/:id/menu" element={<RestaurantMenu />} />
 
-        
         <Route path="/admin" element={<AdminDashboard user={user} />}>
           <Route path="users" element={<UsersList />} />
           <Route path="restaurants" element={<AdminRestaurantsList />} />
           <Route path="restaurant/add" element={<RestaurantForm />} />
           <Route path="restaurant/update/:id" element={<RestaurantForm />} />
+        </Route>
+
+        <Route path="/customer" element={<CustomerDashboard user={user} />}>
+          <Route path="" element={<RestaurantsList />} />
+          <Route path="restaurants/:id/menu" element={<RestaurantMenu user={user} />} />
+          <Route path="orders" element={<CustomerOrders user={user} />} />
         </Route>
 
         <Route path="/owner" element={<OwnerDashboard user={user} />}>
@@ -110,6 +116,7 @@ function App() {
           <Route path="restaurants/:restaurantId/meals" element={<OwnerMealsList />} />
           <Route path="restaurants/:restaurantId/orders/list" element={<OrdersList />} />
         </Route>
+
       </Routes>
 
       <Modal isOpen={!!authModal} onClose={closeModal}>

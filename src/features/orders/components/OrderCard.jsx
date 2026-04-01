@@ -43,6 +43,7 @@ export default function OrderCard({ order, onUpdate }) {
 
     return (
         <div className="order-card">
+            <div className="order-card-content">
 
             <div className="card-header">
                 <span className="order-status">{order.status}</span>
@@ -107,6 +108,7 @@ export default function OrderCard({ order, onUpdate }) {
                     )
                 }
             </div>)}
+        </div>
         </div>
     )
 }

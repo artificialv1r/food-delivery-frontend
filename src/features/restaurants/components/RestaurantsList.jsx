@@ -150,7 +150,7 @@ export default function RestaurantsList(){
                             image={restaurant.imageUrl || "../src/core/images/placeholder.jpg"}
                             name={restaurant.name}
                             description={restaurant.description}
-                            onClick={() => navigate(`/restaurants/${restaurant.id}/menu`)}
+                            onClick={() => navigate(`/customer/restaurants/${restaurant.id}/menu`)}
                         />
                 ))}
             </div>

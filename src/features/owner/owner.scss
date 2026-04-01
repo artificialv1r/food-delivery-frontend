@@ -2,11 +2,14 @@
 
 .owner-dashboard {
   display: flex;
-  max-height: 90dvh;
+  height: 90dvh;
+  overflow: hidden;
 
   .owner-content {
     flex: 1;
     padding: 30px;
+    overflow-y: auto;
+    min-height: 0;
   }
 }
 
