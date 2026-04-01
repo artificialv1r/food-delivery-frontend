@@ -3,6 +3,8 @@ import WelcomePage from "./WelcomePage";
 import {RestaurantsList} from "../../features/restaurants";
 import AdminDashboard from "../../features/admin/components/AdminDashboard";
 import {OwnerDashboard} from "../../features/owner";
+import CustomerDashboard from "../../features/customers/components/CustomerDashboard";
+import {Navigate} from "react-router-dom";
 
 export default function HomePage({ user}){
     if(!user)
@@ -10,17 +12,9 @@ export default function HomePage({ user}){
         return <WelcomePage/>
     }
 
-    if(user.role === 1){
-        return <RestaurantsList />
-    }
-
-    if(user.role === 2){
-        return <AdminDashboard user={user}/>
-    }
-
-    if(user.role === 3){
-        return <OwnerDashboard user={user}/>
-    }
+    if (user.role === 1) return <Navigate to="/customer" replace />;
+    if (user.role === 2) return <Navigate to="/admin" replace />;
+    if (user.role === 3) return <Navigate to="/owner/restaurants" replace />;
 
     return <WelcomePage/>;
 }

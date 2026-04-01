@@ -69,3 +69,17 @@ export async function cancelOrder(orderId){
         throw error;
     }
 }
+
+export async function createOrder(orderData) {
+    try {
+        const token = localStorage.getItem('token');
+        const response = await Api.post(`/api/Order`, orderData, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
