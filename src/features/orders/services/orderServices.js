@@ -83,3 +83,16 @@ export async function createOrder(orderData) {
         throw error;
     }
 }
+
+export async function getMyOrders(status = null) {
+    try {
+        const token = localStorage.getItem('token');
+        const params = status !== null ? `?status=${status}` : "";
+        const response = await Api.get(`/api/Order/my-orders${params}`, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}

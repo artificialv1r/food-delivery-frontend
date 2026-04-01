@@ -85,7 +85,7 @@ const RestaurantMenu = ({user}) => {
                 deliveryApartment:    address.deliveryApartment ? parseInt(address.deliveryApartment) : null,
             });
             setCart({});
-            navigate("/")
+            navigate("/customer/orders")
         } catch {
             setOrderError("Error while creating order.");
         } finally {

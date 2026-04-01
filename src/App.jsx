@@ -22,6 +22,7 @@ import OwnerRestaurantPage from "./features/owner/components/OwnerRestaurantPage
 import OwnerOrders from "./features/owner/components/OwnerOrders";
 import OwnerOrdersPage from "./features/owner/components/OwnerOrdersPage";
 import CustomerDashboard from "./features/customers/components/CustomerDashboard";
+import CustomerOrders from "./features/customers/components/CustomerOrders";
 
 
 function App() {
@@ -104,6 +105,7 @@ function App() {
         <Route path="/customer" element={<CustomerDashboard user={user} />}>
           <Route path="" element={<RestaurantsList />} />
           <Route path="restaurants/:id/menu" element={<RestaurantMenu user={user} />} />
+          <Route path="orders" element={<CustomerOrders user={user} />} />
         </Route>
 
         <Route path="/owner" element={<OwnerDashboard user={user} />}>

@@ -32,7 +32,7 @@
   }
 
   .success {
-    color: $accept-color;
+    color: $success-color;
     margin-bottom: 15px;
     font-size: $font-size-small;
   }
@@ -191,7 +191,7 @@
     display: inline-block;
     background: $bg-card;
     border: 1px solid $border-color;
-    color: $accept-color;
+    color: $success-color;
     font-weight: bold;
     padding: 6px 12px;
     border-radius: 4px;
@@ -265,7 +265,7 @@ button {
   }
 
   .meal-price{
-    color: $accept-color;
+    color: $success-color;
     font-weight: bold;
   }
   .meals-preview {
@@ -419,7 +419,7 @@ button {
             color: whitesmoke;
 
             &:focus {
-              border-color: $accept-color;
+              border-color: $success-color;
             }
             &::placeholder {
               color: $description-color;
@@ -435,7 +435,7 @@ button {
     }
 
     .order-submit{
-      background: $accept-color;
+      background: $success-color;
       border-radius: 10px;
       padding: 10px;
       transition: all 0.3s ease-in-out;
