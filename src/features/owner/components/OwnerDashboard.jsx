@@ -1,19 +1,20 @@
-import React from 'react';
 import {Navigate, Outlet} from "react-router-dom";
+import React from "react";
 import UserSidebar from "../../../core/layout/UserSidebar";
+import "../owner.scss"
 
-export default function AdminDashboard({ user }) {
+export default function OwnerDashboard({user}){
     if (!user) {
         return <Navigate to="/" replace />;
     }
 
-    if (user.role !== 2) {
+    if (user.role !== 3) {
         return <Navigate to="/" replace />;
     }
     return (
-        <div className="admin-dashboard">
+        <div className="owner-dashboard">
             <UserSidebar user={user} />
-            <div className="admin-content">
+            <div className="owner-content">
                 <Outlet />
             </div>
         </div>

@@ -10,11 +10,20 @@ import AddUserForm from "./features/admin/components/AddUserForm";
 import UsersList from "./features/admin/components/UsersList";
 import HomePage from "./core/layout/HomePage";
 import RestaurantsList from "./features/restaurants/components/RestaurantsList";
-import AdminRestaurantsList from "./features/admin/components/AdminRestaurantsList"
+import AdminRestaurantsList from "./features/admin/components/AdminRestaurantsList";
 import AdminDashboard from "./features/admin/components/AdminDashboard";
 import RestaurantForm from "./features/admin/components/RestaurantForm";
-import OwnerMealsList from "./features/meal/components/OwnerMealList";
 import ActiveOrderPage from "./features/courier/components/ActiveOrderPage";
+import OwnerMealsList from "./features/meals/components/OwnerMealList";
+import RestaurantMenu from "./features/meals/components/RestaurantMenu";
+import OwnerDashboard from "./features/owner/components/OwnerDashboard";
+import OrdersList from "./features/orders/components/OrdersList";
+import OwnerRestaurants from "./features/owner/components/OwnerRestaurants";
+import OwnerRestaurantPage from "./features/owner/components/OwnerRestaurantPage";
+import OwnerOrders from "./features/owner/components/OwnerOrders";
+import OwnerOrdersPage from "./features/owner/components/OwnerOrdersPage";
+import CustomerDashboard from "./features/customers/components/CustomerDashboard";
+import CustomerOrders from "./features/customers/components/CustomerOrders";
 
 
 function App() {
@@ -86,7 +95,6 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage user={user} />} />
         <Route path="/admin/add-user" element={<AddUserForm />} />
-        <Route path="/owner/restaurants/:restaurantId/meals" element={<OwnerMealsList />} />
         <Route path="/courier/active-order" element={<ActiveOrderPage />} />
 
         <Route path="/admin" element={<AdminDashboard user={user} />}>
@@ -94,6 +102,21 @@ function App() {
           <Route path="restaurants" element={<AdminRestaurantsList />} />
           <Route path="restaurant/add" element={<RestaurantForm />} />
           <Route path="restaurant/update/:id" element={<RestaurantForm />} />
+        </Route>
+
+        <Route path="/customer" element={<CustomerDashboard user={user} />}>
+          <Route path="" element={<RestaurantsList />} />
+          <Route path="restaurants/:id/menu" element={<RestaurantMenu user={user} />} />
+          <Route path="orders" element={<CustomerOrders user={user} />} />
+        </Route>
+
+        <Route path="/owner" element={<OwnerDashboard user={user} />}>
+          <Route path="restaurants" element={<OwnerRestaurants user={user} />} />
+          <Route path="orders" element={<OwnerOrders user={user} />} />
+          <Route path="restaurants/:restaurantId" element={<OwnerRestaurantPage />} />
+          <Route path="restaurants/:restaurantId/orders" element={<OwnerOrdersPage />} />
+          <Route path="restaurants/:restaurantId/meals" element={<OwnerMealsList />} />
+          <Route path="restaurants/:restaurantId/orders/list" element={<OrdersList />} />
         </Route>
 
       </Routes>

@@ -1,1 +1,0 @@
-export { default as OwnerMealsList } from './components/OwnerMealsList';

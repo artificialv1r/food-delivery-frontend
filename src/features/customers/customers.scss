@@ -1,0 +1,103 @@
+@import '/src/core/layout/variables';
+@import '/src/core/layout';
+
+.page-header .control-tab{
+  display: flex;
+  gap: 10px;
+
+  .active-btn{
+    background-color: $bg-card;
+    border: 1px solid $border-color;
+    transition: all 0.15s ease-in-out;
+
+    &:hover{
+      border-color: $success-color;
+      box-shadow: 0 0 8px rgba(59, 226, 130, 0.5);
+      transform: translateY(-1px);
+    }
+  }
+
+  .finished-btn{
+    background-color: $bg-card;
+    border: 1px solid $border-color;
+    transition: all 0.25s ease-in-out;
+
+    &:hover{
+      border: 1px solid $accent-color;
+      box-shadow: 0 0 8px rgba(242, 97, 63, 0.5);
+      transform: translateY(-1px);
+    }
+  }
+
+  .canceled-btn{
+    background-color: $bg-card;
+    border: 1px solid $border-color;
+    transition: all 0.25s ease-in-out;
+
+    &:hover{
+      border: 1px solid $danger-color;
+      box-shadow: 0 0 8px rgba(55, 7, 58, 0.5);
+      transform: translateY(-1px);
+    }
+  }
+}
+.orders-preview{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 150px;
+  height: auto;
+
+  .order-card{
+    width: 100%;
+    border: 1px solid $border-color;
+    border-radius: 6px;
+    background-color: $bg-card;
+    padding: 10px;
+
+    .order-content{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .order-info{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .order-address{
+        color: $description-color;
+      }
+
+      .price{
+        color: $success-color;
+      }
+    }
+  }
+
+  .status-onhold {
+    color: #fff700;
+  }
+
+  .status-accepted {
+    color: $success-color;
+  }
+
+  .status-canceled {
+    color: $danger-color;
+  }
+
+  .status-pickup {
+    color: $accent-color;
+  }
+
+  .status-delivery {
+    color: $delivery-color;
+  }
+
+  .status-delivered {
+    color: $delivered-color;
+  }
+}

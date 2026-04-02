@@ -1,0 +1,497 @@
+@import '/src/core/layout/variables';
+
+.restaurant-menu-page {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 40px;
+}
+
+.meal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background-color: $bg-card;
+  font-size: 14px;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  color: $description-color;
+
+  h2 {
+    color: whitesmoke;
+    font-size: 14px;
+  }
+
+  .meal-divider{
+    height: 1px;
+    background: $border-color;
+    margin: 10px 0;
+  }
+  .meal-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+
+    .field{
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      &-full{
+        grid-column: 1/-1;
+      }
+    }
+
+    input, textarea{
+      border-radius: 10px;
+      background-color: $border-color;
+      border: 1px solid $border-color;
+      outline: none;
+      padding: 10px 15px;
+      color: whitesmoke;
+
+      &:focus {
+        border-color: $success-color;
+      }
+      &::placeholder {
+        color: $description-color;
+      }
+    }
+
+    textarea{
+      margin-top: 5px;
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+      resize: none;
+    }
+
+    label{
+      color: whitesmoke;
+    }
+  }
+
+  .meal-form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+
+    button {
+      flex: 1;
+      padding: 10px;
+      border-radius: 20px;
+      border: none;
+      font-size: $font-size-small;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 300ms ease;
+    }
+
+    .btn-submit, .btn-add {
+      background: $success-color;
+      border-radius: 10px;
+      padding: 10px;
+      transition: all 0.3s ease-in-out;
+
+      &:hover:not(:disabled) {
+        background: #27ae60;
+        box-shadow: 0 0 10px rgba(59, 226, 130, 0.5);
+        transform: translateY(-1px);
+      }
+
+      &:disabled {
+        background-color: $bg-card;
+        transform: translateY(0);
+        cursor: not-allowed;
+      }
+    }
+
+    button:not(.btn-submit) {
+      background: $danger-color;
+      border-radius: 10px;
+      padding: 10px;
+      transition: all 0.3s ease-in-out;
+
+      &:hover:not(:disabled) {
+        background: $danger-color;
+        box-shadow: 0 0 8px rgba(255, 3, 43, 0.72);
+        transform: translateY(-1px);
+      }
+
+      &:disabled {
+        background-color: $bg-card;
+        transform: translateY(0);
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .error {
+    color: $tertiary-color;
+    margin-bottom: 15px;
+    font-size: $font-size-small;
+  }
+
+  .success {
+    color: $success-color;
+    margin-bottom: 15px;
+    font-size: $font-size-small;
+  }
+
+}
+
+.btn-wrap{
+  padding: 10px;
+}
+
+.btn-add {
+  background: $bg-card;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover:not(:disabled) {
+    border-color: $success-color;
+    box-shadow: 0 0 10px rgba(59, 226, 130, 0.5);
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    background-color: $bg-card;
+    transform: translateY(0);
+    cursor: not-allowed;
+  }
+}
+
+.meal-page {
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .page-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .page-layout{
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 20px;
+  }
+
+  .btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .meals-table-container {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: $bg-card;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid $border-color;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      thead {
+        border-bottom: 2px solid $success-color;
+      }
+
+      thead th {
+        padding: 12px 16px;
+        text-align: left;
+        font-size: 13px;
+        font-weight: bold;
+        color: white;
+      }
+
+      tbody tr {
+        transition: background 0.15s;
+        cursor: default;
+        background-color: $bg-card;
+
+        &:hover {
+          background-color: #3c3c3c;
+        }
+
+        td {
+          padding: 13px 16px;
+          font-size: 14px;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  .desc {
+    color: #888;
+    font-size: 13px;
+  }
+
+  .price-badge {
+    display: inline-block;
+    background: $bg-card;
+    border: 1px solid $border-color;
+    color: $success-color;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 4px;
+  }
+
+  .allergen-tag {
+    display: inline-block;
+    background: $bg-card;
+    color: #993C1D;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin: 2px 2px 2px 0;
+  }
+
+  .no-allergen {
+    color: #aaa;
+    font-size: 13px;
+  }
+
+  .no-data {
+    padding: 2rem;
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+  }
+}
+
+button {
+  background: #ff073a;
+  color: white;
+  padding: 6px 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+
+  &:disabled {
+    cursor: not-allowed;
+    color: gray;
+    background: #fefb82;
+  }
+}
+
+.btn-edit {
+  background: #F2613F;
+
+  &:hover {
+    background: #d84b2b;
+  }
+}
+
+.restaurant-menu-page .page-layout{
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 20px;
+  align-items: start;
+
+  h3{
+    color: whitesmoke;
+  }
+
+  .meal-price{
+    color: $success-color;
+    font-weight: bold;
+  }
+  .meals-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 150px;
+    height: auto;
+
+    .meal-card {
+      border: 1px solid $border-color;
+      border-radius: 6px;
+      background-color: $bg-card;
+      padding: 10px;
+
+      .meal-card-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+      .meal-info{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        p{
+          font-size: 12px;
+          color:whitesmoke;
+        }
+
+        .meal-name{
+          font-weight: bold;
+        }
+        .meal-description{
+          color: $description-color;
+        }
+
+        .meal-price{
+          font-size: 12px;
+          font-weight: bold;
+        }
+      }
+
+      .order-controls{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: whitesmoke;
+
+        button{
+          width: 28px;
+          height: 28px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          background-color: transparent;
+          border: 1px solid $border-color;
+          border-radius: 50%;
+          transition: background-color 0.3s;
+
+          &:hover:not(:disabled){
+            background-color: $border-color;
+          }
+
+          &:disabled{
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+        }
+      }
+      }
+    }
+  }
+
+  .cart-sidebar{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: whitesmoke;
+
+    .cart-header{
+      padding: 15px;
+      background-color: $bg-card;
+      border: 1px solid $border-color;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      h2{
+        font-size: 14px;
+      }
+
+      p{
+        font-size: 14px;
+        color: $description-color;
+      }
+      .cart-divider {
+        height: 1px;
+        background: $border-color;
+        margin: 10px 0; }
+
+      .cart-row{
+        display: flex;
+        justify-content: space-between;
+          color: $description-color;
+        span{
+          font-weight: bold;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .address-form{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px;
+      background-color: $bg-card;
+      font-size: 14px;
+      text-transform: capitalize;
+      color: $description-color;
+      border-radius: 12px;
+      border: 1px solid $border-color;
+
+      h2{
+        color: whitesmoke;
+        font-size: 14px;
+      }
+
+      .address-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+
+        .field{
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+
+          &-full {
+            grid-column: 1 / -1;
+          }
+
+          input{
+            border-radius: 10px;
+            background-color: $border-color;
+            border: 1px solid $border-color;
+            outline: none;
+            padding: 10px 15px;
+            color: whitesmoke;
+
+            &:focus {
+              border-color: $success-color;
+            }
+            &::placeholder {
+              color: $description-color;
+            }
+          }
+        }
+      }
+
+      .order-error  {
+        font-size: 12px;
+        color: #e05252;
+        margin-bottom: 10px; }
+    }
+
+    .order-submit{
+      background: $success-color;
+      border-radius: 10px;
+      padding: 10px;
+      transition: all 0.3s ease-in-out;
+
+      &:hover:not(:disabled) {
+        background: #27ae60;
+        box-shadow: 0 0 10px rgba(59, 226, 130, 0.5);
+        transform: translateY(-1px);
+      }
+
+      &:disabled {
+        background-color: $bg-card;
+        transform: translateY(0);
+        cursor: not-allowed;
+      }
+    }
+  }
+}
