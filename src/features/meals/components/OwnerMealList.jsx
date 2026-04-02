@@ -67,71 +67,75 @@ export default function OwnerMealsList() {
     if (error) return <div className="meals-list">{error}</div>;
 
     return (
-        <div className="meals-list">
-            <div className="meal-hero">
+        <div className="meal-page">
+            <div className="page-header">
                 <h1>Meals list</h1>
-                <div className='btn-wrap'>
-                    <button className="btn-add" onClick={handleAdd}>
-                        + Add Meal
-                    </button>
-                </div>
             </div>
-            {showForm && (
+
+            <div className="page-layout">
+                <div className="meals-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Allergens</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {meals.map((meal) => (
+                                <tr key={meal.id}>
+                                    <td>{meal.name}</td>
+                                    <td className="desc">{meal.description ?? '-'}</td>
+                                    <td>
+                                        <span className="price-badge">
+                                            {meal.price.toFixed(2)} RSD
+                                        </span>
+                                    </td>
+                                    <td>
+                                        {meal.mealAllergens && meal.mealAllergens.length > 0
+                                            ? meal.mealAllergens.map((a) => (
+                                                <span key={a.id} className="allergen-tag">{a.name}</span>
+                                            ))
+                                            : <span className="no-allergen">-</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <button className="delete-btn" onClick={() => handleDelete(meal.id)}>Delete</button>
+                                    </td>
+                                    <td>
+                                        <button
+                                            className="btn-edit"
+                                            onClick={() => handleEdit(meal)}
+                                        >
+                                            Edit
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    {meals.length === 0 && (
+                        <div className="no-data">No meals found for this restaurant.</div>
+                    )}
+                    <div className='btn-wrap'>
+                        <button className="btn-add" onClick={handleAdd} disabled={!editingMeal}>
+                            + Add Meal
+                        </button>
+                    </div>
+                </div>
+
                 <MealForm
                     restaurantId={parseInt(restaurantId)}
                     existingMeal={editingMeal}
                     onSuccess={handleSuccess}
                     onCancel={handleCancel}
                 />
-            )}
-            <div className="meals-table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Allergens</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {meals.map((meal) => (
-                            <tr key={meal.id}>
-                                <td>{meal.name}</td>
-                                <td className="desc">{meal.description ?? '-'}</td>
-                                <td>
-                                    <span className="price-badge">
-                                        {meal.price.toFixed(2)} RSD
-                                    </span>
-                                </td>
-                                <td>
-                                    {meal.mealAllergens && meal.mealAllergens.length > 0
-                                        ? meal.mealAllergens.map((a) => (
-                                            <span key={a.id} className="allergen-tag">{a.name}</span>
-                                        ))
-                                        : <span className="no-allergen">-</span>
-                                    }
-                                </td>
-                                <td>
-                                    <button className="delete-btn" onClick={() => handleDelete(meal.id)}>Delete</button>
-                                </td>
-                                <td>
-                                    <button
-                                        className="btn-edit"
-                                        onClick={() => handleEdit(meal)}
-                                    >
-                                        Edit
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                {meals.length === 0 && (
-                    <div className="no-data">No meals found for this restaurant.</div>
-                )}
+
             </div>
+
         </div>
     );
 }

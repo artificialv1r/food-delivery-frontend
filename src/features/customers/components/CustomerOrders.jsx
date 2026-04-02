@@ -28,8 +28,8 @@ export default function CustomerOrders({user}) {
     const fetchOrders = async () => {
         try{
             setLoading(true);
-            const date = await getMyOrders(currentTab.status);
-            setOrders(date);
+            const data = await getMyOrders(currentTab.status);
+            setOrders(data);
         } catch (error) {
             setError(error);
         } finally {
