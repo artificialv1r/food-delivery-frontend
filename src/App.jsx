@@ -10,9 +10,10 @@ import AddUserForm from "./features/admin/components/AddUserForm";
 import UsersList from "./features/admin/components/UsersList";
 import HomePage from "./core/layout/HomePage";
 import RestaurantsList from "./features/restaurants/components/RestaurantsList";
-import AdminRestaurantsList from "./features/admin/components/AdminRestaurantsList"
+import AdminRestaurantsList from "./features/admin/components/AdminRestaurantsList";
 import AdminDashboard from "./features/admin/components/AdminDashboard";
 import RestaurantForm from "./features/admin/components/RestaurantForm";
+import ActiveOrderPage from "./features/courier/components/ActiveOrderPage";
 import OwnerMealsList from "./features/meals/components/OwnerMealList";
 import RestaurantMenu from "./features/meals/components/RestaurantMenu";
 import OwnerDashboard from "./features/owner/components/OwnerDashboard";
@@ -94,6 +95,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage user={user} />} />
         <Route path="/admin/add-user" element={<AddUserForm />} />
+        <Route path="/courier/active-order" element={<ActiveOrderPage />} />
 
         <Route path="/admin" element={<AdminDashboard user={user} />}>
           <Route path="users" element={<UsersList />} />
