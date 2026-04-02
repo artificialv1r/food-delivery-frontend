@@ -34,8 +34,12 @@ export default function MealForm({ restaurantId, existingMeal, onSuccess, onCanc
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
     }
 
-    async function handleSubmit(e) {
-        e.preventDefault();
+    async function handleSubmit() {
+        if (!formData.name || !formData.price) {
+            setError("Name and price are required.");
+            return;
+        }
+
         setError(null);
         setLoading(true);
 
@@ -46,7 +50,6 @@ export default function MealForm({ restaurantId, existingMeal, onSuccess, onCanc
         };
 
         try {
-
             if (isEdit) {
                 await updateMeal(restaurantId, existingMeal.id, payload);
             } else {
@@ -57,8 +60,7 @@ export default function MealForm({ restaurantId, existingMeal, onSuccess, onCanc
         } catch (err) {
             const data = err.response?.data;
             if (data?.errors) {
-                const messages = Object.values(data.errors).flat().join(", ");
-                setError(messages);
+                setError(Object.values(data.errors).flat().join(", "));
             } else if (typeof data === "string") {
                 setError(data);
             } else {
@@ -73,40 +75,56 @@ export default function MealForm({ restaurantId, existingMeal, onSuccess, onCanc
         <div className="meal-form-wrap">
             <div className="meal-form">
                 <h2>{isEdit ? "Edit Meal" : "Add Meal"}</h2>
-                {error && <p className="error">{error}</p>}
-                {success && <p className="success">{success}</p>}
-                <form onSubmit={handleSubmit}>
-                    <input
-                        name="name"
-                        placeholder="Meal name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                    />
-                    <textarea
-                        name="description"
-                        placeholder="Description (optional)"
-                        value={formData.description}
-                        onChange={handleChange}
-                    />
-                    <input
-                        name="price"
-                        type="number"
-                        step="0.01"
-                        placeholder="Price"
-                        value={formData.price}
-                        onChange={handleChange}
-                        required
-                    />
-                    <div className="meal-form-actions">
-                        <button type="submit" disabled={loading}>
-                            {loading ? "Saving..." : isEdit ? "Update Meal" : "Add Meal"}
-                        </button>
-                        <button type="button" onClick={onCancel}>
-                            Cancel
-                        </button>
+                <p>Please fill in the details below to help track your recipes, nutritional goals, or ingredients. Adding detailed information ensures your meal plan stays accurate and tailored to your tastes.</p>
+                <div className="meal-divider"/>
+                <div className="meal-grid">
+                    <div className="field">
+                        <label>Name</label>
+                        <input
+                            name="name"
+                            placeholder="Meal name"
+                            value={formData.name}
+                            onChange={handleChange}
+                        />
                     </div>
-                </form>
+
+                    <div className="field">
+                        <label>Price</label>
+                        <input
+                            name="price"
+                            type="number"
+                            placeholder="Price"
+                            value={formData.price}
+                            onChange={handleChange}
+                        />
+                    </div>
+
+                    <div className="field-full">
+                        <label>Description</label>
+                        <textarea
+                            name="description"
+                            placeholder="Description (optional)"
+                            value={formData.description}
+                            onChange={handleChange}
+                        />
+                    </div>
+                </div>
+
+                <div className="meal-form-actions">
+                    <button
+                        type="button"
+                        disabled={loading}
+                        onClick={handleSubmit}
+                        className="btn-submit"
+                    >
+                        {loading ? "Saving..." : isEdit ? "Update Meal" : "Add Meal"}
+                    </button>
+                    <button type="button" onClick={onCancel}>
+                        Cancel
+                    </button>
+                </div>
+                {error   && <p className="error">{error}</p>}
+                {success && <p className="success">{success}</p>}
             </div>
         </div>
     );
