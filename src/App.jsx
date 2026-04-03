@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./core/layout/Header";
 import Modal from "./features/authentication/components/Modal";
 import UserLoginForm from "./features/authentication/components/UserLoginForm";
 import RegisterForm from "./features/authentication/components/UserRegistrationForm";
-import WelcomePage from "./core/layout/WelcomePage";
 import { loginUser } from "./features/authentication/services/authService";
 import AddUserForm from "./features/admin/components/AddUserForm";
 import UsersList from "./features/admin/components/UsersList";
@@ -17,7 +16,6 @@ import ActiveOrderPage from "./features/courier/components/ActiveOrderPage";
 import OwnerMealsList from "./features/meals/components/OwnerMealList";
 import RestaurantMenu from "./features/meals/components/RestaurantMenu";
 import OwnerDashboard from "./features/owner/components/OwnerDashboard";
-import OrdersList from "./features/orders/components/OrdersList";
 import OwnerRestaurants from "./features/owner/components/OwnerRestaurants";
 import OwnerRestaurantPage from "./features/owner/components/OwnerRestaurantPage";
 import OwnerOrders from "./features/owner/components/OwnerOrders";
@@ -25,6 +23,8 @@ import OwnerOrdersPage from "./features/owner/components/OwnerOrdersPage";
 import CustomerDashboard from "./features/customers/components/CustomerDashboard";
 import CustomerOrders from "./features/customers/components/CustomerOrders";
 import ParticlesPage from "./features/particles/ParticlesPage";
+import CourierDashboard from "./features/courier/components/CourierDashboard";
+import CourierProfileManagement from "./features/courier/components/CourierProfileManagement";
 
 
 function App() {
@@ -58,8 +58,6 @@ function App() {
 
     try {
       const response = await loginUser(credentials);
-      console.log("Login successful:", response);
-
       const userData = {
         id: response.id,
         username: response.username,
@@ -71,7 +69,6 @@ function App() {
       setUser(userData);
       closeModal();
     } catch (error) {
-      console.error("Login failed:", error);
       setLoginError(error.response?.data || "Login failed. Please try again.");
     } finally {
       setIsLoading(false);
@@ -95,12 +92,10 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage user={user} />} />
-        <Route path="/admin/add-user" element={<AddUserForm />} />
-        <Route path="/courier/active-order" element={<ActiveOrderPage />} />
-        <Route path="/particles-test" element={<ParticlesPage />} />
 
         <Route path="/admin" element={<AdminDashboard user={user} />}>
           <Route path="users" element={<UsersList />} />
+          <Route path="users/add-user" element={<AddUserForm />} />
           <Route path="restaurants" element={<AdminRestaurantsList />} />
           <Route path="restaurant/add" element={<RestaurantForm />} />
           <Route path="restaurant/update/:id" element={<RestaurantForm />} />
@@ -115,10 +110,13 @@ function App() {
         <Route path="/owner" element={<OwnerDashboard user={user} />}>
           <Route path="restaurants" element={<OwnerRestaurants user={user} />} />
           <Route path="orders" element={<OwnerOrders user={user} />} />
-          <Route path="restaurants/:restaurantId" element={<OwnerRestaurantPage />} />
+          <Route path="restaurants/:restaurantId" element={<OwnerMealsList />} />
           <Route path="restaurants/:restaurantId/orders" element={<OwnerOrdersPage />} />
-          <Route path="restaurants/:restaurantId/meals" element={<OwnerMealsList />} />
-          <Route path="restaurants/:restaurantId/orders/list" element={<OrdersList />} />
+        </Route>
+
+        <Route path="/courier" element={<CourierDashboard user={user} />}>
+          <Route path="" element={<CourierProfileManagement user={user} />}/>
+          <Route path="active-order" element={<ActiveOrderPage />} />
         </Route>
 
       </Routes>

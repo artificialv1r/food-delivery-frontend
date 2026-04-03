@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import "../administrator.scss";
 import {fetchUsers} from "../services/adminService";
+import {useNavigate} from "react-router-dom";
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);
@@ -14,6 +15,8 @@ const UsersList = () => {
   const [totalItems, setTotalItems] = useState(0);
   const [hasNextPage, setHasNextPage] = useState(false);
   const [hasPreviousPage, setHasPreviousPage] = useState(false);
+
+  const navigate = useNavigate();
 
   async function loadUsers(page, pageSize){
     try{
@@ -58,7 +61,6 @@ const UsersList = () => {
 
   const getRoleClass = (role) => roleColors[role] || "role-default";
 
-
   if (loading) {
     return <div className="users-list">Loading publishers...</div>;
   }
@@ -69,9 +71,10 @@ const UsersList = () => {
 
   return (
    <div className="users-list">
-     <h1>
-       Users List
-     </h1>
+     <div className="page-header">
+        <h1>Users List</h1>
+        <button className="add-user-btn" onClick={() => {navigate("/admin/users/add-user")}}>Add User</button>
+     </div>
      <div className="users-list-container">
        <table>
          <thead>

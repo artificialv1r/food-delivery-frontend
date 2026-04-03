@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import {getAllRestaurantsFromOneOwner} from "../../restaurants/services/restaurantsService";
-import RestaurantCard from "../../restaurants/components/RestaurantCard";
 import "../owner.scss"
 import {useNavigate} from "react-router-dom";
 import RestaurantsGrid from "../../restaurants/components/RestaurantGrid";
@@ -17,7 +16,7 @@ export default function OwnerOrders({user}){
             const data = await getAllRestaurantsFromOneOwner();
             setRestaurants(data);
         } catch (error) {
-            setError(error);
+            setError("Orders not found!");
         } finally {
             setLoading(false);
         }
@@ -27,19 +26,19 @@ export default function OwnerOrders({user}){
         fetchRestaurants();
     }, []);
 
-    if (loading) return <div className="page-layout">Loading restaurants...</div>;
-    if (error)   return <div className="page-layout">{error}</div>;
-
     return(
         <div className="page-layout restaurants-page">
             <div className="page-header">
                 <h1>My Orders</h1>
                 <p>Select a restaurant to view and manage its orders.</p>
+                {error && <p className="error-message">{error}</p>}
+                {loading && <p className="error-message">Loading orders...</p>}
             </div>
             <RestaurantsGrid
                 restaurants={restaurants}
                 getLink={(r) => `/owner/restaurants/${r.id}/orders`}
             />
+
         </div>
     )
 

@@ -17,7 +17,7 @@ export default function OwnerRestaurants({user}){
             const data = await getAllRestaurantsFromOneOwner();
             setRestaurants(data);
         } catch (error) {
-            setError(error);
+            setError("Restaurants not found");
         } finally {
             setLoading(false);
         }
@@ -26,15 +26,13 @@ export default function OwnerRestaurants({user}){
     useEffect(() => {
         fetchRestaurants();
     }, []);
-
-    if (loading) return <div className="page-layout restaurants-page">Loading restaurants...</div>;
-    if (error)   return <div className="page-layout">{error}</div>;
-
     return(
         <div className="page-layout restaurants-page">
             <div className="page-header">
                 <h1>My Restaurants</h1>
                 <p>Select a restaurant to manage its details, menu, and settings.</p>
+                {error && <p className="error-message">{error}</p>}
+                {loading && <p className="error-message">Loading restaurants...</p>}
             </div>
             <RestaurantsGrid
             restaurants={restaurants}

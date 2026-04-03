@@ -21,8 +21,8 @@ const UserLoginForm = ({ onSubmit, error, isLoading }) => {
             <div className="image-left"></div>
             <form onSubmit={handleSubmit(handleFormSubmit)}>
                 <h1>Log in</h1>
-                <div>
-                    <label>Username:</label>
+                <div className="login-row">
+                    <label className="login-label">Username:</label>
                     <div className="input-with-icon">
                         <span className="material-symbols-outlined">person</span>
                         <input 
@@ -33,8 +33,8 @@ const UserLoginForm = ({ onSubmit, error, isLoading }) => {
                     {errors.Username && <span className="error-message">{errors.Username.message}</span>}
                 </div>
 
-                <div>
-                    <label>Password:</label>
+                <div className="login-row">
+                    <label className="login-label">Password:</label>
                     <div className="input-with-icon">
                         <span className="material-symbols-outlined">lock</span>
                         <input 

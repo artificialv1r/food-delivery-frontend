@@ -1,4 +1,4 @@
-import { faUtensils, faUsers, faTruck, faClipboardList, faCog } from "@fortawesome/free-solid-svg-icons";
+import {faUtensils, faUsers, faTruck, faClipboardList, faCog, faUser} from "@fortawesome/free-solid-svg-icons";
 
 export const SIDEBAR_LINKS = {
     1: [
@@ -17,6 +17,7 @@ export const SIDEBAR_LINKS = {
         { to: "/employee/orders",    icon: faClipboardList, label: "Orders" },
     ],
     5: [
-        { to: "/courier/deliveries", icon: faTruck,        label: "Deliveries" },
+        { to: "/courier/active-order", icon: faClipboardList,        label: "Active Delivery" },
+        { to: "/courier", icon: faUser,        label: "Profile" },
     ]
 };

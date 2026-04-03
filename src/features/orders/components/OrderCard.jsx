@@ -1,13 +1,15 @@
 import React, {useState} from "react";
 import "../order.scss"
-import {acceptOrder, cancelOrder} from "../services/orderServices";
+import {acceptOrder, assignCourier, cancelOrder} from "../services/orderServices";
 
 export default function OrderCard({ order, onUpdate }) {
-    const [readyAt, setReadyAt] = React.useState("");
+    const [readyAt, setReadyAt] = useState("");
     const [processing, setProcessing] = useState(false);
     const minDateTime = new Date(Date.now() + 5 * 60000).toISOString().slice(0, 16);
     const [showConfirm, setShowConfirm] = useState(false);
     const isPending = order.status === "OnHold";
+    const isAccepted = order.status === "Accepted";
+    const [error, setError] = useState(null);
 
     const handleAccept = async () => {
         if(!readyAt){
@@ -36,6 +38,20 @@ export default function OrderCard({ order, onUpdate }) {
             setProcessing(false);
         } catch (error) {
             alert("Failed to cancel order!");
+        } finally {
+            setProcessing(false);
+        }
+    }
+
+    const handleAssignCourier = async () => {
+        try{
+            setError(null);
+            setProcessing(true);
+            await assignCourier(order.id);
+            await onUpdate();
+            setProcessing(false);
+        } catch (error) {
+            setError(error.response?.data?.error || "Failed to assign courier!");
         } finally {
             setProcessing(false);
         }
@@ -108,6 +124,11 @@ export default function OrderCard({ order, onUpdate }) {
                     )
                 }
             </div>)}
+
+                {isAccepted && (<div className="delivery-button">
+                    <button className="assign-btn" onClick={handleAssignCourier}>Assign Courier</button>
+                    {error && <div className="alert">{error}</div>}
+                </div>)}
         </div>
         </div>
     )
