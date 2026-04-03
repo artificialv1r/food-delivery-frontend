@@ -7,3 +7,16 @@ export async function getActiveOrder(){
   });
   return response.data;
 }
+
+export async function setWorkingHours(data){
+  try{
+    const token = localStorage.getItem("token");
+    const response = await Api.post(`/api/Courier`, data,{
+      headers : { Authorization: `Bearer ${token}`},
+    })
+    return response.data;
+  } catch (error){
+    throw error;
+  }
+}
+

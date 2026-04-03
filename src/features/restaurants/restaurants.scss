@@ -9,6 +9,7 @@
   .restaurants-hero {
     display: flex;
     justify-content: start;
+    align-items: center;
 
     h1 {
       color: $accent-color;
@@ -18,6 +19,7 @@
   .restaurants-filters {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     select {
       padding: 10px;
@@ -40,10 +42,12 @@
     gap: 0;
 
     input {
-      color: $accent-color;
+      color: whitesmoke;
       flex: 1;
       padding: 10px;
-      border-radius: 40px;
+      border:1px solid $border-color;
+      background: $bg-card;
+      border-radius: 8px;
       font-size: 16px;
       font-weight: bold;
       width: 300px;
@@ -54,6 +58,7 @@
 
       &:focus{
         outline: none;
+        border-color: $accent-color;
       }
     }
 
