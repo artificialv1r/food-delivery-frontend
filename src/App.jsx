@@ -22,6 +22,7 @@ import OwnerOrders from "./features/owner/components/OwnerOrders";
 import OwnerOrdersPage from "./features/owner/components/OwnerOrdersPage";
 import CustomerDashboard from "./features/customers/components/CustomerDashboard";
 import CustomerOrders from "./features/customers/components/CustomerOrders";
+import ParticlesPage from "./features/particles/ParticlesPage";
 import CourierDashboard from "./features/courier/components/CourierDashboard";
 import CourierProfileManagement from "./features/courier/components/CourierProfileManagement";
 
