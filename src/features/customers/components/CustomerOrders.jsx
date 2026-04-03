@@ -31,7 +31,7 @@ export default function CustomerOrders({user}) {
             const data = await getMyOrders(currentTab.status);
             setOrders(data);
         } catch (error) {
-            setError(error);
+            setError("Failed to fetch orders.");
         } finally {
             setLoading(false);
         }

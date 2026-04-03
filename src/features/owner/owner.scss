@@ -43,6 +43,16 @@
     color: #fff700;
     font-size: 20px;
   }
+
+  .error-message{
+    color: $accent-color;
+    font-size: 16px;
+  }
+}
+
+.page-content .orders-layout .orders-empty{
+  color:$accent-color;
+  margin-top: 10px;
 }
 
 .restaurant-management {
@@ -76,5 +86,61 @@
   &:hover {
     border-color: #fff700;
     transform: translateY(-2px);
+  }
+}
+
+.page-header {
+  .control-tab {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+
+    .accepted-btn {
+      background-color: $bg-card;
+      border: 1px solid $border-color;
+      transition: all 0.15s ease-in-out;
+
+      &:hover {
+        border-color: $success-color;
+        box-shadow: 0 0 8px rgba(59, 226, 130, 0.5);
+        transform: translateY(-1px);
+      }
+    }
+
+    .pending-btn {
+      background-color: $bg-card;
+      border: 1px solid $border-color;
+      transition: all 0.25s ease-in-out;
+
+      &:hover {
+        border: 1px solid $accent-color;
+        box-shadow: 0 0 8px rgba(242, 97, 63, 0.5);
+        transform: translateY(-1px);
+      }
+    }
+
+    .canceled-btn {
+      background-color: $bg-card;
+      border: 1px solid $border-color;
+      transition: all 0.25s ease-in-out;
+
+      &:hover {
+        border: 1px solid $danger-color;
+        box-shadow: 0 0 8px rgba(55, 7, 58, 0.5);
+        transform: translateY(-1px);
+      }
+    }
+
+    .delivered-btn {
+      background-color: $bg-card;
+      border: 1px solid $border-color;
+      transition: all 0.25s ease-in-out;
+
+      &:hover {
+        border: 1px solid $delivered-color;
+        box-shadow: 0 0 8px rgba(15, 228, 248, 0.53);
+        transform: translateY(-1px);
+      }
+    }
   }
 }

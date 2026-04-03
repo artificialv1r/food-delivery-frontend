@@ -28,8 +28,7 @@ header{
 
 }
 .navbar {
-  background-color: transparent;
-  backdrop-filter: blur(3px);
+  background-color: $background-color;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,14 +51,15 @@ header{
     gap: 20px;
 
     button {
-      color: $text-color-light;
+      color: whitesmoke;
       font-size: 14px;
-      font-weight: 600;
-      padding: 5px 15px;
-      border: 2px solid #ffffff;
+      font-weight: 500;
+      padding: 6px 18px;
+      border: 1px solid whitesmoke;
       background-color: rgba(0, 0, 0, 0.6);
-      border-radius: 20px;
+      border-radius: 6px;
       cursor: pointer;
+      transition: all 0.3s ease-in-out;
 
       &:hover {
         background-color: $text-color-light;

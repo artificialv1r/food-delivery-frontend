@@ -3,13 +3,13 @@
 .admin-form {
   max-width: 500px;
   margin: 50px auto;
-  background: rgb(231, 231, 231);
+  background: $bg-card;
   border-radius: 12px;
-  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+  border:1px solid $border-color;
   padding: 10px;
 
   h2 {
-    color: #F2613F;
+    color: whitesmoke;
     margin-bottom: 20px;
     text-align: center;
   }
@@ -21,6 +21,15 @@
     margin-bottom: 5px;
   }
 
+  input, select {
+    background-color: $bg-card !important;
+    color: whitesmoke;
+    &:focus{
+      border-color: $success-color !important;
+      outline: none !important;
+    }
+  }
+
   >div {
     margin-bottom: 15px;
   }
@@ -29,14 +38,15 @@
     width: 100%;
     padding: 12px;
     margin-top: 10px;
-    background: $accent-color;
+    background: $success-color;
     color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 
     &:hover {
-      background: $tertiary-color;
+      background: #27ae60;
     }
   }
 
@@ -49,6 +59,7 @@
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 
     &:hover {
       background: #7f8c8d;
@@ -66,12 +77,11 @@
   select {
     width: 100%;
     padding: 14px 14px 14px 40px;
-    border: 1px solid #ccc;
+    border: 1px solid $border-color;
     border-radius: 6px;
 
     &:focus {
       outline: none;
-      border-color: $accent-color;
       box-shadow: 0 0 0 2px rgba(242, 97, 63, 0.15);
     }
   }
@@ -86,7 +96,7 @@
 }
 
 .error-message {
-  color: #e74c3c;
+  color: $danger-color;
   font-size: 12px;
   margin-top: 5px;
 }
@@ -212,6 +222,23 @@
   }
 }
 
+.users-list .page-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+
+  .add-user-btn{
+    background-color: $bg-card;
+    border: 1px solid $border-color;
+    transition: all 0.3s ease-in-out;
+
+    &:hover{
+      border-color: $success-color;
+    }
+  }
+
+}
 .admin-dashboard {
   display: flex;
 
@@ -228,21 +255,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
 
-  .btn-edit {
-    margin-left: 0px;
-    background: #F2613F;
+    .btn-add{
+      background: $bg-card;
+      border: 1px solid $border-color;
+      transition: all 0.3s ease-in-out;
 
-    &:hover {
-      background: #d84b2b;
-    }
-  }
-
-  .btn-add {
-    background: #F2613F;
-    &:hover {
-      background: #d84b2b;
+      &:hover{
+        border-color: $success-color;
+        box-shadow: 0 0 8px rgba(59, 226, 130, 0.5);
+      }
     }
   }
 }
@@ -281,5 +303,15 @@
     margin-top: 5px;
     font-size: 12px;
     color: #e74c3c;
+  }
+}
+
+.restaurants-list-container{
+  .btn-edit{
+    background-color: $accent-color;
+    transition: all 0.3s ease-in-out;
+    &:hover{
+      background-color: $tertiary-color;
+    }
   }
 }

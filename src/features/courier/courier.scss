@@ -1,52 +1,57 @@
 @import '/src/core/layout/variables';
 
-.active-order {
-    padding: 20px 40px;
-
-    h1 {
-        font-size: 22px;
-        font-weight: bold;
-        margin: 0 0 1.5rem;
-        color: white;
-    }
+.page-layout {
 
     .no-order {
-        color: #888;
-        font-size: 14px;
-        padding: 2rem;
-        text-align: center;
-        background-color: #1e1e1e;
-        border-radius: 20px;
+        color: $accent-color;
     }
 
     .order-container {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 20px;
     }
 
     .order-section {
-        background-color: #1e1e1e;
-        border-radius: 20px;
+        background-color: $bg-card;
+        border: 1px solid $border-color;
+        border-radius: 10px;
         padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .status-box{
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .status-pickup {
+            color: #fff700;
+            font-weight: bold;
+        }
+
+        .status-delivery {
+            color: $delivery-color;
+        }
 
         h2 {
-            color: $accent-color;
-            margin-bottom: 10px;
+            font-size: 20px;
+            color: $delivered-color;
         }
 
         p {
             font-size: $font-size-small;
-            color: $text-color-light;
-            margin: 4px 0;
+            color: whitesmoke;
         }
+
 
         table {
             width: 100%;
             border-collapse: collapse;
 
             thead {
-                border-bottom: 2px solid $accent-color;
+                border-bottom: 2px solid $delivery-color;
             }
 
             thead th {
@@ -60,14 +65,7 @@
             tbody tr {
                 transition: background 0.15s;
                 cursor: default;
-
-                &:nth-child(even) {
-                    background-color: #0a0a0a;
-                }
-
-                &:hover {
-                    background-color: #3c3c3c;
-                }
+                border-bottom: 1px solid $border-color;
 
                 td {
                     padding: 13px 16px;
@@ -75,6 +73,29 @@
                     color: #ffffff;
                 }
             }
+        }
+        .delivery-info{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+
+            >div{
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 5px;
+            }
+
+            .action-box{
+                justify-content: center;
+                align-items: center;
+
+                .pickup-btn, .delivered-btn{
+                    background-color: $delivery-color;
+                    width: 80%;
+                    padding: 15px 10px;
+                }
+            }
+
         }
     }
 
@@ -94,5 +115,76 @@
             background: #E6F1FB;
             color: #185FA5;
         }
+    }
+}
+
+//Courier profile
+#courier-name{
+    color: $delivered-color;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.working-hours-form-grid{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    padding: 20px;
+    background-color: $bg-card;
+    border: 1px solid $border-color;
+    border-radius: 10px;
+
+    .field{
+        color: whitesmoke;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        input, select{
+            border-radius: 10px;
+            background-color: $border-color;
+            border: 1px solid $border-color;
+            outline: none;
+            padding: 10px 15px;
+            color: whitesmoke;
+
+            &:focus {
+                border-color: $success-color;
+            }
+            &::placeholder {
+                color: $description-color;
+            }
+        }
+    }
+
+    .btn-submit{
+        background: $success-color;
+        border-radius: 10px;
+        padding: 10px;
+        transition: all 0.3s ease-in-out;
+
+        &:hover:not(:disabled) {
+            background: #27ae60;
+            box-shadow: 0 0 10px rgba(59, 226, 130, 0.5);
+            transform: translateY(-1px);
+        }
+
+        &:disabled {
+            background-color: $bg-card;
+            transform: translateY(0);
+            cursor: not-allowed;
+        }
+    }
+
+    .alert{
+        color: $danger-color;
+        text-align: center;
+    }
+
+    .success{
+        color: $success-color;
+        text-align: center;
     }
 }

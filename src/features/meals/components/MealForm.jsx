@@ -119,9 +119,6 @@ export default function MealForm({ restaurantId, existingMeal, onSuccess, onCanc
                     >
                         {loading ? "Saving..." : isEdit ? "Update Meal" : "Add Meal"}
                     </button>
-                    <button type="button" onClick={onCancel}>
-                        Cancel
-                    </button>
                 </div>
                 {error   && <p className="error">{error}</p>}
                 {success && <p className="success">{success}</p>}

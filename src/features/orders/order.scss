@@ -5,7 +5,8 @@
   h1{
     color: white;
   }
-  }
+}
+
 .orders-layout{
   width: 100%;
   display: grid;
@@ -144,6 +145,15 @@
       &:hover{
         background-color: #cb052b;
       }
+    }
+  }
+  .assign-btn{
+    background-color: $delivered-color;
+    transition: 300ms all;
+    color: $bg-card;
+
+    &:hover{
+      transform: translateY(-1px);
     }
   }
 }
