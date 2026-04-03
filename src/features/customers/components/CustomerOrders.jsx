@@ -67,6 +67,12 @@ export default function CustomerOrders({user}) {
                                     <span className="order-address"> {order.deliveryStreet} {order.deliveryStreetNumber}, {order.deliveryCity}</span>
                                 </div>
 
+                                {order.courierName && (
+                                <div className="order-courier">
+                                    <span className="order-courier">Courier name: {order.courierName}</span>
+                                </div>
+
+                                )}
                                 <div className="order-price">
                                     <span className="price"> {order.totalPrice?.toLocaleString()} RSD</span>
                                 </div>
@@ -77,7 +83,7 @@ export default function CustomerOrders({user}) {
                                         {order.status}
                                     </span>
                                 </div>
-                        </div>
+                            </div>
                     </div>
                 ))
                 }
