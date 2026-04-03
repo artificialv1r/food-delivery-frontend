@@ -24,6 +24,7 @@ import OwnerOrders from "./features/owner/components/OwnerOrders";
 import OwnerOrdersPage from "./features/owner/components/OwnerOrdersPage";
 import CustomerDashboard from "./features/customers/components/CustomerDashboard";
 import CustomerOrders from "./features/customers/components/CustomerOrders";
+import ParticlesPage from "./features/particles/ParticlesPage";
 
 
 function App() {
@@ -96,6 +97,7 @@ function App() {
         <Route path="/" element={<HomePage user={user} />} />
         <Route path="/admin/add-user" element={<AddUserForm />} />
         <Route path="/courier/active-order" element={<ActiveOrderPage />} />
+        <Route path="/particles-test" element={<ParticlesPage />} />
 
         <Route path="/admin" element={<AdminDashboard user={user} />}>
           <Route path="users" element={<UsersList />} />
