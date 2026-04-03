@@ -63,8 +63,26 @@ export default function CustomerOrders({user}) {
                             <div className="order-info">
                                 <span className="order-id">Order number: {order.id}</span>
 
+                                <div className="order-restaurant">
+                                    <span className="order-restaurant">Restaurant: {order.restaurantName} </span>
+                                </div>
+
                                 <div className="order-address">
-                                    <span className="order-address"> {order.deliveryStreet} {order.deliveryStreetNumber}, {order.deliveryCity}</span>
+                                    <span className="order-address">Street: {order.deliveryStreet} {order.deliveryStreetNumber}</span>
+                                </div>
+
+                                <div className="order-city">
+                                    <span className="order-city">City: {order.deliveryCity} </span>
+                                </div>
+
+                                <div className="order-list">
+                                    {order.mealsOrdered.map((meal) => (
+                                        <div className="meal-row" key={meal.id}>
+                                            <span>{meal.quantity}× {meal?.mealName}</span>
+                                            <span>{meal.priceAtOrder} RSD</span>
+                                        </div>
+                                    ))}
+
                                 </div>
 
                                 {order.courierName && (

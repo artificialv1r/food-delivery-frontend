@@ -67,8 +67,18 @@
       flex-direction: column;
       gap: 10px;
 
-      .order-address{
-        color: $description-color;
+      .order-list{
+        margin-left: 20px;
+        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        .meal-row{
+          color: $description-color;
+          display: flex;
+          justify-content: space-between;
+          width: 300px;
+        }
       }
 
       .price{
